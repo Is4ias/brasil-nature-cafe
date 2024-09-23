@@ -54,31 +54,34 @@ const navigation = useNavigation();
 
 const navigateToShoppingCart = () => {
     navigation.navigate('ShoppingCart');
-
-
-const navigateToMenuOpen = () => {
-    navigation.navigate('Menu');
-}
 }; 
 
+// const navigateMyAccount = () => {
+//     navigation.navigate('Account')
+// }
+ 
 
 
 
 return (
     <View style={styles.container}>
         <TouchableOpacity >
-            <MaterialIcons style={ styles.MenuOpen} onPress={navigateToShoppingCart}
-                name="menu-open"
-                size={28}
-                color="#52555A"
-            />
-           
-            <MaterialIcons style={ styles.AccountCircle} onPress={navigateToShoppingCart} 
-                name="account-circle"
-                size={28}
-                color="#D17842"
-            />   
+                <MaterialIcons style={ styles.MenuOpen} onPress={navigateToShoppingCart}
+                    name="menu-open"
+                    size={28}
+                    color="#52555A"
+                />
+
+                <Image
+                    source={require('../../assets/rıbeirosss.png')}
+                    style={{ alignItems: 'center'}}
+                    size={28}>
+                </Image>
+
+        
+             
         </TouchableOpacity>
+        
     
         <View style={styles.containerList}>
             <FlatList
@@ -93,11 +96,7 @@ return (
         </View>
 
         <ScrollView showsVerticalScrollIndicator={false}>
-            <View>
-                <Text style={{ fontSize: 30, color: '#FFF'}}>
-                    arrumar o botão dos details e o menu horizontal em baixo do titulo- Arrumar o botao de usuario e o menu superior com o drawer - fazer o carrossel na tela inicial  
-                </Text>
-            </View>
+            
 
             <View style={styles.textContainer}>
                 <Text style={[styles.text]}>Find the best{'\n'}Coffee for you</Text>
@@ -105,19 +104,13 @@ return (
 
             {/* <ListaHorizontal>
             </ListaHorizontal> */}
-            {/* <BarraPesquisa>
-            </BarraPesquisa> */}
-            
-            <View>
-                <Text></Text>
-            </View>
 
+            <BarraPesquisa>
+            </BarraPesquisa>
 
 
             <ScrollView horizontal>
-                
-
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 40}}>
                     <View style={styles.GraySquare}> 
                         <Shoes img={require('../../assets/caferomantico.jpg')} onClick={() => navigation.navigate('Detail')}>
                             1
@@ -274,13 +267,19 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     image:{
-        flex: 1,
         width:100,
         height: 100,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 20,
-        zIndex: 2
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        
+    },
+    containerImage:{
+        flexDirection: 'row',
+        
+    },
+    ButtonHeader:{
+        marginTop: 10,
+        marginLef: 10,
     },
     textContainer:{
         color: '#FFF',
@@ -347,11 +346,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         marginVertical: 15
     },
-    AccountCircle :{
-        marginLeft: '90%' , 
-        position:'absolute', 
-        marginVertical: 15
-    }
 
 });
 

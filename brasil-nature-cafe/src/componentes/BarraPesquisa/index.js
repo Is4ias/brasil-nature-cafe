@@ -26,7 +26,7 @@ const SearchBar= ({ onSearch }) => {
         <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
           <Text style={{ color: 'white'}}>pesquisa</Text>
         </TouchableOpacity>
-      /</View>
+      </View>
     </View>
   );
 }
@@ -35,28 +35,31 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent: 'center',
     alignItems: 'center',
+    
   },
   searchBarContainer: {
     width: '80%',
-    backgroundColor: '#252A32', /* Cor de fundo cinza escuro */
-    borderRadius: 20,/* Bordas arredondadas */
+    backgroundColor: '#252A32', 
+    borderRadius: '15px',
     padding: 10,
+    margin: 20,
     flexDirection: 'row',
     alignItems: 'center',
+    
   },
   
   searchInput:{
     flex: 1, /* A entrada de texto ocupa todo o espaço disponível */
     backgroundColor: '#252A32', /*cor de fundo do input*/
-    borderRadius: 20,
+    borderRadius: '15px',
     padding: 5,
     marginRight: 10,
     fontSize: 15 //espaço entre campo de pesquisa e o botao
   },
 
   searchButton:{
-    backgroundColor: '#deb887', /* Cor de fundo do botão (marron) */
-    borderRadius: 20,
+    backgroundColor: '#D17842', 
+    borderRadius: 23,
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',

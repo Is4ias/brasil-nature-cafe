@@ -8,14 +8,14 @@ import { Feather } from '@expo/vector-icons';
 import { TouchableOpacity} from 'react-native';
 
 import { MaterialIcons } from '@expo/vector-icons'
-//import IconsApp from './src/componentes/IconsApp';
+
 
 import Home from './pages/home';
 import ShoppingCartScreen from './pages/ShoppingCart';
 import NotificationsPage from './pages/NotificationsScreen';
 import Detail from './pages/Detail';
 import Detail2 from './pages/DetailDois';
-import MyAccount from './componentes/Account';
+import MyAccount from './pages/Account';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,6 +28,9 @@ function Tabs() {
        <Tab.Screen name="Notifications" component={NotificationsPage} />
        <Tab.Screen name="Account" component={MyAccount}/>
      </Tab.Navigator>
+
+
+
   );
  }
  
@@ -64,20 +67,26 @@ function Tabs() {
              ),
            }}
          />
-         {/* <Stack.Screen
-         name="">
+         <Stack.Screen
+         name="Account"
+         component={MyAccount}
+         options={{
+          headerLeft: () => (
+            <TouchableOpacity>
+              <Feather name="arrow-left" size={24} color="black"></Feather>
+            </TouchableOpacity>
+          )
+         }}>
 
-         </Stack.Screen> */}
+         </Stack.Screen>
 
 
-
-
-
-
-
-
-
-
+         {/* <NavigationContainer>
+          <Drawer.Navigator initialRouterName="home">
+            <Drawer.Screen name="" component={}/>
+            <Drawer.Screen name="" component={}/>
+          </Drawer.Navigator>
+         </NavigationContainer> */}
 
        </Stack.Navigator>
      </NavigationContainer>
