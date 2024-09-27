@@ -1,11 +1,8 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-// import { AppLoading } from 'expo'
-// import { useFonts, Anton_400Regular } from '@expo-google-fonts/anton'
-
 import Routes from './src/Router';
-// import IconsApp from './src/componentes/IconsApp';
+
 
 export default function App() {
   return (
@@ -16,6 +13,24 @@ export default function App() {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //AppRegistry.registerComponent('brasil-nature-cafe', () => App);H
 
 

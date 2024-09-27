@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height / 1.5//,etade da tela
     },
     title:{
-        //fontFamily: 'Anton_400Regular',
+        fontFamily: 'Anton_400Regular',
         paddingHorizontal: '2%',
         color: '#FFF'
     },
