@@ -54,13 +54,14 @@ const navigateMyAccount = () => {
 return (
     <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
+            
             <TouchableOpacity >
                     <MaterialIcons style={ styles.MenuOpen}
                         name="menu-open"
                         size={28}
                         color="#52555A"
                     />
-                    <MaterialIcons style={ styles.MyAccount} onPress={navigateMyAccount}
+                    <MaterialIcons style={ styles.MyAccount} onPress={navigateToShoppingCart}
                         name="account-circle"
                         size={28}
                         color="#52555A"
@@ -204,20 +205,23 @@ return (
                         harmoniosa de doçura e amargor. O toque final vem com marshmallows macios, levemente derretidos pelo calor do café, que proporcionam 
                         uma textura cremosa e um sabor suave de baunilha. 
                     </Text>
+
                 </View>
 
-                <View style={styles.GraySquare2}>
-                    <Shoes img={require('../../assets/cafe8.jpg')} onClick={() => navigation.navigate('Clicou')}>
-                            Duplo Chocolate
-                            <Text style={styles.Text3}>
-                            
-                            </Text>
-                    </Shoes>
-                </View>
+
             </View>
             
 
-            
+            {/*
+
+            <View style={styles.GraySquare2}>
+                <Shoes img={require('../../assets/cafe7.jpg')} onClick={() => navigation.navigate('Clicou')}>
+                        Duplo Chocolate
+                        <Text style={styles.Text3}>
+                        
+                        </Text>
+                </Shoes>
+            </View> */}
 
 
         </ScrollView>
@@ -309,7 +313,8 @@ const styles = StyleSheet.create({
         marginLeft: 20    
     },
     GraySquare2:{
-        backgroundColor: '#252A32',
+        // backgroundColor: '#252A32',
+        backgroundColor: 'rgb( 5, 0, 255)',
         borderRadius: 28,
         width: '90%',
         height: 'auto',

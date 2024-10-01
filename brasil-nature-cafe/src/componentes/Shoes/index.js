@@ -31,7 +31,7 @@ export default function Shoes(props){
                 <View style={{ position: 'relative',}}> 
                     <MaterialIcons
                         name="attach-money"
-                        size={28}
+                        size={20}
                         color="#ff8c00"
                     />
                 </View>

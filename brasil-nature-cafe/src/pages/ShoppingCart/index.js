@@ -5,7 +5,6 @@ const ShoppingCartScreen = () => {
   const [cartItems, setCartItems] = useState([
     { id: 1, name: 'Produto A', price: 19.99, quantity: 2 },
     { id: 2, name: 'Produto B', price: 24.99, quantity: 1 },
-    // Adicione mais itens conforme necessário
   ]);
 
   const getTotalPrice = () => {

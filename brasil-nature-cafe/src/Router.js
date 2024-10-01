@@ -14,7 +14,7 @@ import NotificationsPage from './pages/NotificationsScreen';
 import Detail from './pages/Detail';
 import Detail2 from './pages/DetailDois';
 import MyAccount from './pages/Account';
-import favorites from './pages/Favorites';
+import favoritos from './pages/Favorites';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -42,7 +42,7 @@ function Tabs() {
 
         <Tab.Screen 
           name="Favorites" 
-          component={favorites}
+          component={favoritos}
           options={{
             tabBarIcon:({ color, size }) => <Foundation name="heart" color={color} size={size}/>,
             tabBarLabel: 'Favorites'
@@ -76,7 +76,7 @@ function DrawerNavigator() {
 
       <Drawer.Screen
         name='Favorites'
-        component={favorites}
+        component={favoritos}
         options={{ drawerLabel: 'Favorites'}}>
       </Drawer.Screen>
 
@@ -134,8 +134,19 @@ function DrawerNavigator() {
             </TouchableOpacity>
           )
          }}>
-
          </Stack.Screen>
+
+         <Stack.Screen
+         name='Favorities'
+         component={favoritos}
+         options={{
+          headerLeft: () => (
+            <TouchableOpacity style={{ marginLeft: 15}}>
+              <Feather name="arrow-left" size={24} color="black"></Feather>
+            </TouchableOpacity>
+          )
+         }}/>
+
 
 
       
