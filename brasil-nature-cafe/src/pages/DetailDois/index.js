@@ -29,26 +29,24 @@ return (
                     <View style={styles.productInfo}>
                         <Text style={styles.texTitle}>Café com chocolate 20%</Text>
                             <Text style= {styles.SubTitle}>From africa</Text>
+                            
                             <View style={styles.InfoRow}>
                                 <Text style= {styles.Rating}>★ 4.5 (6,879)</Text>
-
                                 <View style={styles.TagContainer}>
                                     <View>
                                         <Image
                                             source={require('../../assets/Vector.png')}
                                             style={styles.imageBean}
                                             resizeMode='cover'
-                                            >
-                                            
-
-                                        </Image>
+                                        />
                                         <Text style={styles.info}>Bean</Text>
                                     </View>
+                                    
                                     <View>
                                         <Text style={styles.info}>Milk</Text>
                                     </View>
                                 </View> 
-                                
+ 
                             </View>                 
                     </View>
                 </View>

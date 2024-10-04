@@ -1,4 +1,4 @@
-import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { View, Text , TouchableOpacity, Image, StyleSheet} from "react-native";
 
@@ -28,17 +28,17 @@ export default function Shoes(props){
             </View>
 
             <View style={styles.PosionIcons}>
-                <View style={{ position: 'relative',}}> 
+                <View style={{ }}> 
                     <MaterialIcons
                         name="attach-money"
-                        size={20}
+                        size={25}
                         color="#ff8c00"
                     />
                 </View>
-                <View style={{}}>
-                    <MaterialIcons
-                        name="add-circle"
-                        size={28}
+                <View style={{  }}>
+                    <AntDesign
+                        name="pluscircle"
+                        size={25}
                         color="#ff8c00"
                     />
                 </View>
@@ -71,8 +71,9 @@ const styles = StyleSheet.create({
     },
     PosionIcons:{
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        
+        justifyContent: 'space-between',
+        marginLeft: 8,
+        marginRight: 8
         
     }
 });

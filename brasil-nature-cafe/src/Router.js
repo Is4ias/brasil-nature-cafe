@@ -15,6 +15,7 @@ import Detail from './pages/Detail';
 import Detail2 from './pages/DetailDois';
 import MyAccount from './pages/Account';
 import favoritos from './pages/Favorites';
+import ProductScreen from './pages/Product';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -22,7 +23,14 @@ const Drawer = createDrawerNavigator();
 
 function Tabs() {
   return (
-     <Tab.Navigator screenOptions={{ headerShown: false}}>
+     <Tab.Navigator 
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: { backgroundColor: '#0C0F14'},
+        tabBarActiveTintColor: '#D17842',
+        tabBarInactiveTintColor: '#52555A'
+        }}>
+
        <Tab.Screen 
           name="Home" 
           component={Home}
@@ -146,6 +154,18 @@ function DrawerNavigator() {
             </TouchableOpacity>
           )
          }}/>
+
+         <Stack.Screen
+         name="Product"
+         component={ProductScreen}
+         options={{
+          headerRight: () => (
+            <TouchableOpacity style={{ marginRigth: 15}}>
+              <Feather name='shopping-cart' size={24} color="Black"></Feather>
+            </TouchableOpacity>
+          )
+         }}>
+         </Stack.Screen>
 
 
 

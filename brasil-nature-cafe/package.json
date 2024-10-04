@@ -19,6 +19,7 @@
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.14",
     "@react-navigation/stack": "^6.3.19",
+    "axios": "^1.7.7",
     "expo": "^49.0.16",
     "expo-constants": "~14.4.2",
     "expo-font": "~11.4.0",
