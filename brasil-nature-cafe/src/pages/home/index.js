@@ -1,14 +1,16 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, BackHandler, FlatList, ActivityIndicator } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons'
+import { Entypo, MaterialIcons } from '@expo/vector-icons'
 import axios from 'axios';
 import Shoes from '../../componentes/Shoes';
 import { useNavigation } from '@react-navigation/native';
 import BarraPesquisa from '../../componentes/BarraPesquisa';
 import DATA from '../../componentes/ListaHorizontal/MenuHorizontal';
 
-import ShoppingCartScreen from '../ShoppingCart';
-import MyAccount from '../Account';
+// import ShoppingCartScreen from '../ShoppingCart';
+// import MyAccount from '../Account';
+
+
 
 export default function Home() {
     
@@ -43,29 +45,37 @@ export default function Home() {
 
 const navigation = useNavigation();
 
-const navigateToShoppingCart = () => {
-    navigation.navigate('ShoppingCart')
+const navigateToNotifications= () => {
+    navigation.navigate('NotificationsPage')
 }; 
 
-const navigateMyAccount = () => {
-    navigation.navigate('Account')
-}
 return (
     <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={ styles.headerTop }>
+                <TouchableOpacity >
+                        <MaterialIcons style={ styles.MenuOpen}
+                            name="menu-open"
+                            size={28}
+                            color="#52555A"
+                        />
+                        <View style={styles.containerLogo}>
+                            <Image
+                                source={require('../../assets/rıbeirosss.png')}
+                                style={ styles.imageLogo}  
+                
+                                />
+                        </View>
+
+                        <Entypo style={ styles.MyAccount} onPress={navigateToNotifications}
+                            name="bell"
+                            size={28}
+                            color="#52555A"
+                        />
+
+                </TouchableOpacity>
+            </View>
             
-            <TouchableOpacity >
-                    <MaterialIcons style={ styles.MenuOpen}
-                        name="menu-open"
-                        size={28}
-                        color="#52555A"
-                    />
-                    <MaterialIcons style={ styles.MyAccount} onPress={navigateToShoppingCart}
-                        name="account-circle"
-                        size={28}
-                        color="#52555A"
-                    />
-            </TouchableOpacity>
 
         
 
@@ -103,9 +113,24 @@ const styles = StyleSheet.create({
             width: '%', //100% da tela
             backgroundColor: '#0C0F14'
         },
-        header:{
-            justifyContent: 'center',
-            alignItems: 'center'
+        headerTop:{
+            justifyContent:'space-between',
+            flexDirection: 'column'
+            // justifyContent: 'center'
+        },
+        containerLogo:{
+            flexDirection: 'row',
+            justifyContent:"center",
+            alignItems: 'center',
+            // backgroundColor: '#DC3535'
+            
+        },
+        imageLogo: {
+            width: 100,
+            height: 120,
+            marginTop: 10,
+            
+            
         },
         image:{
             width: '149px',
@@ -113,10 +138,6 @@ const styles = StyleSheet.create({
             borderRadius: 25,
             marginLeft: 10,
             marginTop: 10
-            
-        },
-        containerImage:{
-            flexDirection: 'row',
             
         },
         ButtonHeader:{
@@ -206,11 +227,12 @@ const styles = StyleSheet.create({
         MenuOpen:{
             marginLeft: '5%',
             position: 'absolute',
-            marginVertical: 15
+            marginVertical: 15,
+            top: 50
         },
         MyAccount:{
-            top: 15,
-            marginLeft: '85%',
+            top: 50,
+            marginLeft: '90%',
             marginVertical: 5,
             position: 'absolute'
     

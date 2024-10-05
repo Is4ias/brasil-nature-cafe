@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Feather, Entypo, Foundation } from '@expo/vector-icons';
+import { Feather, Entypo, Foundation, MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacity} from 'react-native';
 
 
@@ -57,11 +57,11 @@ function Tabs() {
           }}/>
 
        <Tab.Screen 
-          name="Notifications" 
-          component={NotificationsPage}
+          name="Account" 
+          component={MyAccount}
           options={{
-            tabBarIcon: ({ color, size }) => <Entypo name="bell" color={color} size={size}/>,
-            tabBarLabel: 'Notifications'
+            tabBarIcon: ({ color, size }) => <MaterialIcons name="account-circle" color={color} size={size}/>,
+            tabBarLabel: 'My Account'
           }} />
      </Tab.Navigator>
   );
@@ -164,8 +164,17 @@ function DrawerNavigator() {
               <Feather name='shopping-cart' size={24} color="Black"></Feather>
             </TouchableOpacity>
           )
-         }}>
-         </Stack.Screen>
+         }}/>
+         <Stack.Screen
+          name="Notificações"
+          component={NotificationsPage}
+          options={{
+            headerRight: () => (
+              <TouchableOpacity style={{ marginRigth: 15}}>
+                <Feather name='shopping-cart' size={24} color="Black"></Feather>
+              </TouchableOpacity>
+            )
+          }}/>
 
 
 

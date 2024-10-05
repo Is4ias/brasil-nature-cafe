@@ -49,12 +49,13 @@ const styles = StyleSheet.create({
   },
   
   searchInput:{
-    flex: 1, /* A entrada de texto ocupa todo o espaço disponível */
-    backgroundColor: '#252A32', /*cor de fundo do input*/
+    flex: 1, 
+    backgroundColor: '#252A32',
     borderRadius: '15px',
     padding: 5,
     marginRight: 10,
-    fontSize: 15 //espaço entre campo de pesquisa e o botao
+    fontSize: 15,
+    height: '100%' ,
   },
 
   searchButton:{
