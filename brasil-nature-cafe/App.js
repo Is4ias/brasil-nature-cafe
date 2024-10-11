@@ -1,24 +1,13 @@
 import 'react-native-gesture-handler';
-import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import Routes from './src/Router';
+import Routes from './Router';
+
+// import { TrendingFoods } from './src/componentes/trending';
 
 
 export default function App() {
-  // const[ data, setData ] = useState("");
-  // const getData = async () => {
-  //   try{
-  //     const resp = await fetch("https://api.sampleapis.com/coffee/hot")
-  //     const json = await resp.json();
-  //     setData(json);
-  //   } catch (err) {
-  //     setData(err.message);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  // <TrendingFoods/>
+ 
   
   return (
     <>
@@ -32,8 +21,6 @@ export default function App() {
     </>
   );
 }
-
-// arrumar a API - DEIXEI O CHAT GPT NA PAGINA JÁ 
 
 
 

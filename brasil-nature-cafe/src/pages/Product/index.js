@@ -1,9 +1,5 @@
-import React from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
+import React from 'react'; 
 import  { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
-import SizeButton from '../../componentes/SizeButton';
-import Footer from '../../componentes/Footer';
-import Shoes from '../../componentes/Shoes';
 
 
 const ProductScreen = ({ route }) => {

@@ -1,11 +1,12 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, BackHandler, FlatList, ActivityIndicator } from 'react-native';
 import { Entypo, MaterialIcons } from '@expo/vector-icons'
-import axios from 'axios';
 import Shoes from '../../componentes/Shoes';
 import { useNavigation } from '@react-navigation/native';
 import BarraPesquisa from '../../componentes/BarraPesquisa';
 import DATA from '../../componentes/ListaHorizontal/MenuHorizontal';
+import DrawerRoutes from '../../../../routes/drawer.routes';
+
 
 // import ShoppingCartScreen from '../ShoppingCart';
 // import MyAccount from '../Account';
@@ -49,12 +50,13 @@ const navigateToNotifications= () => {
     navigation.navigate('NotificationsPage')
 }; 
 
+
 return (
     <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={ styles.headerTop }>
                 <TouchableOpacity >
-                        <MaterialIcons style={ styles.MenuOpen}
+                        <MaterialIcons style={ styles.MenuOpen} onPress={ console.log("abrir o drawer") }
                             name="menu-open"
                             size={28}
                             color="#52555A"
@@ -67,7 +69,7 @@ return (
                                 />
                         </View>
 
-                        <Entypo style={ styles.MyAccount} onPress={navigateToNotifications}
+                        <Entypo style={ styles.NotificationBell} onPress={navigateToNotifications}
                             name="bell"
                             size={28}
                             color="#52555A"
@@ -97,6 +99,8 @@ return (
                     showsHorizontalScrollIndicator={false}>
                 </FlatList>
             </View>
+
+            {/* <TrendingFoods/> */}
 
             
         </ScrollView>
@@ -146,8 +150,7 @@ const styles = StyleSheet.create({
         },
         textContainer:{
             color: '#FFF',
-            // flexDirection: 'row', //um do lado do outro
-            marginVertical: '5%',
+            marginVertical: '1%',
             marginHorizontal: '5%',
             
         },
@@ -167,7 +170,7 @@ const styles = StyleSheet.create({
             fontFamily: 'Anton_400Regular',
             fontSize: 40,
             marginHorizontal: '4%',
-            marginTop: 150,
+            marginTop: 90,
             marginVertical: 60
         },
         text2:{
@@ -230,9 +233,9 @@ const styles = StyleSheet.create({
             marginVertical: 15,
             top: 50
         },
-        MyAccount:{
-            top: 50,
-            marginLeft: '90%',
+        NotificationBell:{
+            top: 55,
+            marginLeft: '85%',
             marginVertical: 5,
             position: 'absolute'
     

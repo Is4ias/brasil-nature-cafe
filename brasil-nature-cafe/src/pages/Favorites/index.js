@@ -20,8 +20,9 @@ const App = () => (
 
 const styles = StyleSheet.create({
    container:{
+    backgroundColor: '#0C0F14',
     flex: 1,
-
+    width: '%',
    },
    image:{
     flex: 1,

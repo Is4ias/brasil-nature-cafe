@@ -7,15 +7,14 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Feather, Entypo, Foundation, MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacity} from 'react-native';
 
-
-import Home from './pages/home';
-import ShoppingCartScreen from './pages/ShoppingCart';
-import NotificationsPage from './pages/NotificationsScreen';
-import Detail from './pages/Detail';
-import Detail2 from './pages/DetailDois';
-import MyAccount from './pages/Account';
-import favoritos from './pages/Favorites';
-import ProductScreen from './pages/Product';
+import Home from './src/pages/home';
+import ShoppingCartScreen from './src/pages/ShoppingCart';
+import NotificationsPage from './src/pages/NotificationsScreen';
+import Detail from './src/pages/Detail';
+import Detail2 from './src/pages/DetailDois';
+import MyAccount from './src/pages/Account';
+import favoritos from './src/pages/Favorites';
+import ProductScreen from './src/pages/Product';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,7 +68,7 @@ function Tabs() {
 
 function DrawerNavigator() {
   return(
-    <Drawer.Navigator initialRouteName="Tabs">
+    <Drawer.Navigator initialRouteName="home">
       <Drawer.Screen
         name="Home"
         component={Tabs}
@@ -92,23 +91,17 @@ function DrawerNavigator() {
   );
 }
  
- const Routes = () => {
+const Routes = () => {
   return (
      <NavigationContainer>
-      <Stack.Screen
-        name="DrawerNavigator"
-        component={DrawerNavigator}
-        options={{ headerShown: false}}>
-      </Stack.Screen>
-
-
        <Stack.Navigator>
+
          <Stack.Screen
            name="Tabs"
            component={Tabs}
            options={{ headerShown: false}}
          />
- 
+  
          <Stack.Screen
            name="Detail"
            component={Detail}
@@ -133,53 +126,50 @@ function DrawerNavigator() {
            }}
          />
          <Stack.Screen
-         name="Account"
-         component={MyAccount}
-         options={{
-          headerLeft: () => (
-            <TouchableOpacity style={{ marginLeft: 15}}>
-              <Feather name="arrow-left" size={24} color="black"></Feather>
-            </TouchableOpacity>
-          )
-         }}>
+          name="Account"
+          component={MyAccount}
+          options={{
+            headerLeft: () => (
+              <TouchableOpacity style={{ marginLeft: 15}}>
+                <Feather name="arrow-left" size={24} color="black"></Feather>
+              </TouchableOpacity>
+            )
+          }}>
          </Stack.Screen>
 
          <Stack.Screen
-         name='Favorities'
-         component={favoritos}
-         options={{
-          headerLeft: () => (
-            <TouchableOpacity style={{ marginLeft: 15}}>
-              <Feather name="arrow-left" size={24} color="black"></Feather>
-            </TouchableOpacity>
-          )
-         }}/>
-
-         <Stack.Screen
-         name="Product"
-         component={ProductScreen}
-         options={{
-          headerRight: () => (
-            <TouchableOpacity style={{ marginRigth: 15}}>
-              <Feather name='shopping-cart' size={24} color="Black"></Feather>
-            </TouchableOpacity>
-          )
-         }}/>
-         <Stack.Screen
-          name="Notificações"
-          component={NotificationsPage}
+          name='Favorities'
+          component={favoritos}
           options={{
-            headerRight: () => (
-              <TouchableOpacity style={{ marginRigth: 15}}>
-                <Feather name='shopping-cart' size={24} color="Black"></Feather>
+            headerLeft: () => (
+              <TouchableOpacity style={{ marginLeft: 15}}>
+                <Feather name="arrow-left" size={24} color="black"></Feather>
               </TouchableOpacity>
             )
           }}/>
 
-
-
-      
-
+         <Stack.Screen
+          name="Product"
+          component={ProductScreen}
+          options={{
+            headerRight: () => (
+              <TouchableOpacity style={{ marginRight: 15}}>
+                <Feather name='shopping-cart' size={24} color="black"></Feather>
+              </TouchableOpacity>
+            )
+          }}/>
+         <Stack.Screen
+            name="Notificações"
+            component={NotificationsPage}
+            options={{
+              headerRight: () => (
+                <TouchableOpacity style={{ marginRight: 15}}>
+                  <Feather name='shopping-cart' size={24} color="black"></Feather>
+                </TouchableOpacity>
+              ),
+              
+            }}
+          />
        </Stack.Navigator>
      </NavigationContainer>
   );
@@ -191,11 +181,4 @@ function DrawerNavigator() {
  export default Routes;
 
 
-
-{/* <NavigationContainer>
-          <Drawer.Navigator initialRouterName="home">
-            <Drawer.Screen name="" component={}/>
-            <Drawer.Screen name="" component={}/>
-          </Drawer.Navigator>
-         </NavigationContainer> */}
 
