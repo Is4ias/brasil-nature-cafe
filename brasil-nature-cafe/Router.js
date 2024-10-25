@@ -3,8 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Feather, Entypo, Foundation, MaterialIcons } from '@expo/vector-icons';
+import { AntDesign, Entypo, Feather, FontAwesome5, Foundation, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacity} from 'react-native';
 
 import Home from './src/pages/home';
@@ -13,12 +12,12 @@ import NotificationsPage from './src/pages/NotificationsScreen';
 import Detail from './src/pages/Detail';
 import Detail2 from './src/pages/DetailDois';
 import MyAccount from './src/pages/Account';
-import favoritos from './src/pages/Favorites';
+import Favoritos from './src/pages/Favorites';
 import ProductScreen from './src/pages/Product';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-const Drawer = createDrawerNavigator();
+
 
 function Tabs() {
   return (
@@ -34,7 +33,7 @@ function Tabs() {
           name="Home" 
           component={Home}
           options={{ 
-            tabBarIcon: ({ color, size }) => <Feather name="home" color={color} size={size}/>,
+            tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size}/>,
             tabBarLabel: 'Início'
           }} 
         />
@@ -43,13 +42,13 @@ function Tabs() {
           name="ShoppingCart" 
           component={ShoppingCartScreen}
           options={{
-            tabBarIcon: ({ color, size }) => <Feather name="shopping-bag" color={color} size={size}/>,
+            tabBarIcon: ({ color, size }) => <Ionicons name="cart" color={color} size={size}/>,
             tabBarLabel: 'Shopping Cart'
           }}/>
 
         <Tab.Screen 
           name="Favorites" 
-          component={favoritos}
+          component={Favoritos}
           options={{
             tabBarIcon:({ color, size }) => <Foundation name="heart" color={color} size={size}/>,
             tabBarLabel: 'Favorites'
@@ -66,30 +65,7 @@ function Tabs() {
   );
  }
 
-function DrawerNavigator() {
-  return(
-    <Drawer.Navigator initialRouteName="home">
-      <Drawer.Screen
-        name="Home"
-        component={Tabs}
-        options={{ drawerLabel: 'Home'}}>
-      </Drawer.Screen>
 
-      <Drawer.Screen
-        name="MyAccount"
-        component={MyAccount}
-        options={{ drawerLabel:'My Account' }}>
-      </Drawer.Screen>
-
-      <Drawer.Screen
-        name='Favorites'
-        component={favoritos}
-        options={{ drawerLabel: 'Favorites'}}>
-      </Drawer.Screen>
-
-    </Drawer.Navigator>
-  );
-}
  
 const Routes = () => {
   return (
@@ -97,9 +73,20 @@ const Routes = () => {
        <Stack.Navigator>
 
          <Stack.Screen
-           name="Tabs"
+           name="home"
            component={Tabs}
-           options={{ headerShown: false}}
+           options={{ 
+            headerShown: false,
+            headerRight: () => (
+              <TouchableOpacity>
+                <Entypo style={{ top: 55 }}
+                  name="bell"
+                  size={28}
+                  color="#52555A"
+                />
+              </TouchableOpacity>
+            )
+          }}
          />
   
          <Stack.Screen
@@ -125,6 +112,7 @@ const Routes = () => {
              ),
            }}
          />
+
          <Stack.Screen
           name="Account"
           component={MyAccount}
@@ -139,11 +127,11 @@ const Routes = () => {
 
          <Stack.Screen
           name='Favorities'
-          component={favoritos}
+          component={Favoritos}
           options={{
             headerLeft: () => (
               <TouchableOpacity style={{ marginLeft: 15}}>
-                <Feather name="arrow-left" size={24} color="black"></Feather>
+                <Feather name="arrow-left" size={24} color="#DC3535"></Feather>
               </TouchableOpacity>
             )
           }}/>
@@ -154,10 +142,11 @@ const Routes = () => {
           options={{
             headerRight: () => (
               <TouchableOpacity style={{ marginRight: 15}}>
-                <Feather name='shopping-cart' size={24} color="black"></Feather>
+                <Feather name='shopping-cart' size={24} color="#DC3535"></Feather>
               </TouchableOpacity>
             )
           }}/>
+
          <Stack.Screen
             name="Notificações"
             component={NotificationsPage}
@@ -167,9 +156,21 @@ const Routes = () => {
                   <Feather name='shopping-cart' size={24} color="black"></Feather>
                 </TouchableOpacity>
               ),
-              
             }}
           />
+          <Stack.Screen
+            name='Carrinho'
+            component={ShoppingCartScreen}
+            options={{
+              headerRight: () => (
+                <TouchableOpacity style={{ marginRight: 15 }}>
+                  <Feather name="shopping-cart" size={24} color="black" />
+                </TouchableOpacity>
+              ),
+
+            }}
+          />
+
        </Stack.Navigator>
      </NavigationContainer>
   );

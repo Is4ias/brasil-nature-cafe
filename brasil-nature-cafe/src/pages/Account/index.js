@@ -1,100 +1,155 @@
-import {Image, View, StyleSheet, ScrollView, Text, TouchableOpacity, Dimensions, LogBox} from 'react-native';
+import {Image, View, StyleSheet, ScrollView, Text, TouchableOpacity, Dimensions, LogBox, ImageBackground, Button} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Feather } from '@expo/vector-icons';
+import { AntDesign, Entypo, Feather, FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import { Grid, Info, User } from 'react-native-feather';
+
 
 export default function MyAccount(){
     return (
         <View style={styles.Container}>
-            <View>
-                <Image
-                    source={require('../../assets/headercafe.png')}
-                    style={styles.ImageHeader}
+                <ImageBackground
+                    source={require('../../assets/cafe1.jpg')}
+                    style={styles.ImageBackground}
                     resizeMode='cover'
                 />
-                <View>
+
+                <TouchableOpacity style={styles.ContainerLogo}>
                     <Image
                         source={require('../../assets/rıbeirosss.png')}
                         style={styles.Logo}
                         />         
-                </View>
+                </TouchableOpacity>
+
                 <TouchableOpacity>
                     <View style={styles.GraySquare3}> 
                         <Image
-                            source={require('../../assets/MinhaFt.jpeg')}
-                            style={styles.MinhaFt}/>
+                            source={require('../../assets/kilerbean.png')}
+                            style={styles.MinhaFt}
+                        />
 
-                        <View>
+                        <View style={styles.ContainerInfo}>
                             <Text style={styles.Name}>Isaías Ribeiro</Text>
-                            <Text style={styles.UserID}>Uusuário 456.456</Text>
-                            <View style={styles.Info}>
-                                <Text>kkkkkkk</Text>
-                                <Text>kkkkkkkkk</Text>
+                            <Text style={styles.UserID}>Usuário 456.456</Text>
+                            <View>
+                                <View style={styles.searchBarContainer}>
+                                    <Text>E-mail: killerCafe@gmail.com</Text>
+                                </View>
+                                <View style={styles.searchBarContainer}>
+                                    <Text>Number: 987654321</Text>
+                                </View>
+                                
                             </View>
+
+                            <TouchableOpacity style={styles.IconsFooter}>
+                                <AntDesign
+                                    name="linkedin-square"
+                                    color="#FFF"
+                                    size={28}
+                                />
+                                <FontAwesome
+                                    name="github-square"
+                                    size={28}
+                                    color="#FFF"
+                                />
+                                <Entypo
+                                    name="instagram"
+                                    color="#FFF"
+                                    size={28}
+                                />
+                            </TouchableOpacity>
 
                         </View>
                     </View>
                 </TouchableOpacity>
-                
-                
-            </View>
-
-       
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     Container:{
-        backgroundColor: '#0C0F14',
+        //backgroundColor: '#0C0F14',
         flex: 1,
     },    
-    ImageHeader:{
+    ImageBackground:{
         width: Dimensions.get('window') .width,
         height: Dimensions.get('window').height,
-        
+
     },
-    GraySquare3: {
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        borderRadius: 23,
-        width: '80%',
-        height: 240,
-        margin: 35,
+    ContainerLogo: {
+        backgroundColor: '#AEAEAE',
         position: 'absolute',
-        bottom: 0,
-        
-        
-    },
-    MinhaFt: {
-         width: 80,
-         height: 70,
-         borderRadius: '90%',
-         position: 'relative',
-         alignSelf: 'center',
-         marginTop: 10
+        top: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%'
     },
     Logo:{
-        width: 100,
+        width: 120,
         height: 120,
         marginTop: 10,
         alignSelf:'center',
         
     },
+    GraySquare3: {
+        backgroundColor: 'rgba(0,0,0,0.7)',
+        borderRadius: 23,
+        width: '85%',
+        height: 550,
+        position: 'absolute',
+        bottom: 0,   
+        alignSelf: 'center',
+        marginVertical: 100
+    },
+    ContainerInfo: {
+        marginLeft: 15,
+        marginTop: 20,
+        // backgroundColor: '#FFFF00'
+    },
+    searchBarContainer: {
+        width: '90%',
+        backgroundColor: '#252A32',
+        borderRadius: '20px',
+        padding: 10,
+        marginVertical: 10,
+        borderColor: '#FFF',
+        
+        
+    },
+    MinhaFt: {
+         width: 100,
+         height: 100,
+         borderRadius: '80%',
+         position: 'relative',
+         alignSelf: 'flex-start',
+         marginTop: 20,
+         marginLeft: 10
+    },
     Name:{
-        fontSize: 14,
+        fontSize: 24,
         fontWeight: 'bold',
         alignItems: 'center',
         fontFamily: 'Anton_400Regular',
         color: '#FFF'
     },
     UserID:{
-        fontSize: 14,
+        fontSize: 20,
         color: "#FFF",
     },
     Info:{
         flexDirection: 'row',
-        color: '#FFF',
-        fontSize: 12
-    }
+        backgroundColor: '#FFF',
+        fontSize: 20,
+        borderRadius: 23,
+        width: '60%',
+        height: '40%',
+        marginVertical: 10
+    },
+    IconsFooter:{
+        flexDirection: 'row',
+        gap: 10,
+        marginVertical: 100,
+        position: 'relative',
+        alignSelf: 'center'
+    },
 
 })

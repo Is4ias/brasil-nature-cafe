@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from 'react-native'
 
 
 const NotificationsPage = () => {
-  // Array simulado de notificações
   const notifications = [
     {
       id: 1,
@@ -38,26 +37,37 @@ const NotificationsPage = () => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    padding: 10
+    padding: 10,
+    backgroundColor: '#0C0F14',
+    
+
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#D17842'
+
   },
   notification:{
     borderBottomWidth:1 ,
     borderBottomColor: '#ccc',
     padding: 10,
-    marginBottom: 10,
+    marginBottom: 0,
+    color: '#FFF',
+
   },
   notificationTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
+    color: '#FFF'
+
   },
   notificationMessage: {
     fontSize: 16,
+    color: '#D17842'
+
   },
 });
 

@@ -1,11 +1,14 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, BackHandler, FlatList, ActivityIndicator } from 'react-native';
-import { Entypo, MaterialIcons } from '@expo/vector-icons'
-import Shoes from '../../componentes/Shoes';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, BackHandler, FlatList, ActivityIndicator, Pressable } from 'react-native';
+import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
 import BarraPesquisa from '../../componentes/BarraPesquisa';
 import DATA from '../../componentes/ListaHorizontal/MenuHorizontal';
-import DrawerRoutes from '../../../../routes/drawer.routes';
+import axios from 'axios';
+import ImageList from '../../componentes/CardapioEspecial';
+import Routes from '../../../Router';
+import NotificationsPage from '../../pages/NotificationsScreen';
+import Button from '../../componentes/Button';
 
 
 // import ShoppingCartScreen from '../ShoppingCart';
@@ -19,8 +22,8 @@ export default function Home() {
     const [selectedId, setSelectedId] = useState(null);
 
     const Item = ({ item, onPress, style }) => (
-        <TouchableOpacity onPress={onPress} style={[styles.itemList, style]}>
-            <Text style={[styles.title, style]}>{item.title}</Text>
+        <TouchableOpacity onPress={onPress} style={[styles.ListHorizontal, style]}>
+            <Text style={[styles.ItemListHorizontal, style]}>{item.title}</Text>
         </TouchableOpacity>
     );
 
@@ -32,6 +35,7 @@ export default function Home() {
             item={item}
             onPress={() => setSelectedId(item.id)}
             style={{ color }}
+    
         />
         );
     };
@@ -43,12 +47,75 @@ export default function Home() {
         });
     }, []);
 
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+      const fetchProducts = async () => {
+        try {
+          
+          const productIds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+          const promises = productIds.map(id => axios.get(`http://localhost:3000/${id}`));
+          const responses = await Promise.all(promises);
+          const fetchedProducts = responses.map(response => response.data);
+          setProducts(fetchedProducts);
+        } catch (error) {
+          console.error('Erro ao buscar produtos:', error);
+        }
+      };
+  
+      fetchProducts();
+    }, []);
+
+    const renderItemProduct = ({ item }) => (
+        <View style={styles.GraySquare}>
+            <Pressable style={{ position: 'relative'}}>
+                <Image source={{ uri: item.image }} style={styles.imageProduto} />
+
+                <View style={styles.stars}>
+                    <AntDesign name='star' color="#FFFF00" size={12}/>
+                    <Text style={{ color: '#FFF'}}>4.9</Text>
+                </View>
+            </Pressable>
+
+            <Text style={styles.nameProduto}>{item.title}</Text>
+
+            <View style={{ flexDirection: 'row' , alignItems: 'center', marginTop: 8}}>
+                <View style={{ flexDirection: 'row', marginHorizontal: 50, marginLeft: 2}}>
+                    <TouchableOpacity>
+                        <FontAwesome
+                            name="dollar"
+                            size={20}
+                            color="#FF8C00"/>
+                        </TouchableOpacity>
+                    <Text style={styles.precoProduto}>4.20</Text> 
+                </View>
+                
+                
+                <Pressable>
+                    <TouchableOpacity>
+                        <Entypo
+                            name='circle-with-plus'
+                            color="#FF8C00"
+                            size={30}
+                        />
+                    </TouchableOpacity>
+                </Pressable>
+          </View>
+
+          
+        </View>
+      );
+    
+    
+    const navigateToDetail = ( ItemP ) => {
+        navigation.navigate('Detail2', { product: ItemP });
+    };
+    const navigateToNotification = () => {
+        navigation.navigate('NotificationsScreen');
+    }
+
 
 const navigation = useNavigation();
 
-const navigateToNotifications= () => {
-    navigation.navigate('NotificationsPage')
-}; 
 
 
 return (
@@ -56,8 +123,8 @@ return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={ styles.headerTop }>
                 <TouchableOpacity >
-                        <MaterialIcons style={ styles.MenuOpen} onPress={ console.log("abrir o drawer") }
-                            name="menu-open"
+                        <Entypo style={ styles.MenuOpen} onPress={ console.log("abrir o drawer1") }
+                            name="menu"
                             size={28}
                             color="#52555A"
                         />
@@ -69,7 +136,8 @@ return (
                                 />
                         </View>
 
-                        <Entypo style={ styles.NotificationBell} onPress={navigateToNotifications}
+                        
+                        <Entypo style={ styles.NotificationBell} onPress={navigateToNotification}
                             name="bell"
                             size={28}
                             color="#52555A"
@@ -82,7 +150,7 @@ return (
         
 
             <View style={styles.textContainer}>
-                <Text style={[styles.text]}>Find the best{'\n'}Coffee for you</Text>
+                <Text style={[styles.Title]}>Find the best{'\n'}Coffee for you</Text>
             </View>  
 
 
@@ -96,13 +164,48 @@ return (
                     renderItem={renderItem2}
                     keyExtractor={(item) => item.id}
                     extraData={selectedId}
-                    showsHorizontalScrollIndicator={false}>
+                    showsHorizontalScrollIndicator={false}
+                    fontSize={24}>
                 </FlatList>
             </View>
 
-            {/* <TrendingFoods/> */}
+            <ScrollView vertical showsVerticalScrollIndicator={false}>
+                <View style={styles.ContainerProduts}>
+                    <ScrollView showsHorizontalScrollIndicator={false}>
+                        <FlatList
+                            horizontal
+                            data={products}
+                            keyExtractor={(item) => item.id.toString()}
+                            renderItem={renderItemProduct}
+                            onPress={navigateToDetail}
+                            
+        
+                        />
 
-            
+                        <Text style={styles.Title2}>Special for you</Text>
+
+                        <View style={styles.ContainerProduts}>
+                                <FlatList
+                                    horizontal
+                                    data={products}
+                                    keyExtractor={(item) => item.id.toString()}
+                                    renderItem={renderItemProduct}
+                                 />
+                            
+                        </View>
+
+                        <Text style={styles.Title2}>Special coffee</Text>
+
+                        <ImageList
+                        ></ImageList>
+
+                    </ScrollView>
+                </View>
+                
+    
+                
+                
+            </ScrollView>
         </ScrollView>
 
     </View>  
@@ -132,77 +235,113 @@ const styles = StyleSheet.create({
         imageLogo: {
             width: 100,
             height: 120,
-            marginTop: 10,
-            
-            
+            marginTop: 15,
         },
-        image:{
-            width: '149px',
-            height: '150px',
-            borderRadius: 25,
-            marginLeft: 10,
+        MenuOpen:{
+            marginLeft: '6%',
+            position: 'absolute',
+            marginVertical: 15,
+            top: 50
+        },
+        NotificationBell:{
+            top: 55,
+            marginLeft: '85%',
+            marginVertical: 5,
+            position: 'absolute'
+    
+        },
+        imageProduto:{
+            width: '138px',
+            height: '145px',
+            borderRadius: 23,
+            marginLeft: 3,
             marginTop: 10
+        },
+        stars:{
+            flexDirection: 'row', 
+            backgroundColor: 'rgba(0,0,0,0.6)', 
+            gap: 5, 
+            width: '30%', 
+            height: 'auto',
+            borderRadius: '25%', 
+            position: 'absolute', 
+            marginTop: 12, 
+            right: 5, 
+            padding: 1, 
+            alignItems: 'center', 
+            justifyContent: 'center'
+        },
+        precoProduto:{
+            fontSize: 18,
+            color: '#FFF',
+            fontWeight: 'bold',
+            marginLeft: 6
             
         },
-        ButtonHeader:{
-            marginTop: 10,
-            marginLef: 10,
+        nameProduto:{
+            fontSize: 14,
+            fontWeight: 'bold',
+            color: '#FFF',
+            marginRight: 33,
+            padding: 8
         },
         textContainer:{
             color: '#FFF',
-            marginVertical: '1%',
+            marginVertical: '2%',
             marginHorizontal: '5%',
+            // backgroundColor: '#DCDCDC',
+            alignSelf: 'flex-start',
+            width: '70%',
             
         },
-        itemList:{
-            padding: 15,
-            marginTop: 10,
-            paddingHorizontal: 5,
-        },
-        containerList:{
-            flwx: 1,
-            marginTop: 40,
-            paddingHorizontal: 20,
-    
-        },
-        text:{
-            color: '#FFF',
-            fontFamily: 'Anton_400Regular',
-            fontSize: 40,
-            marginHorizontal: '4%',
-            marginTop: 90,
-            marginVertical: 60
-        },
-        text2:{
+        Title:{
             color: '#FFF',
             fontFamily: 'Anton_400Regular',
             fontSize: 30,
-            marginHorizontal: '5%',
+            marginHorizontal: '4%',
+            marginTop: 50,
+            
+            
+        },
+        containerList:{
+            flex: 1,
+            paddingHorizontal: 20,
+            marginTop: 10,
+            padding: 10
+        },
+        Title2:{
+            color: '#FFF',
+            fontFamily: 'Anton_400Regular',
+            fontSize: 30,
+            marginHorizontal: '8%',
             marginTop: 60,
             marginVertical: 30,
         },
-        Text3:{
-            fontSize: 15,
-            marginTop: 20,
-            margin: 15,
-            color: '#FFF',
-            
-            
-        },
+        // Text3:{
+        //     fontSize: 15,
+        //     marginTop: 20,
+        //     margin: 15,
+        //     color: '#FFF',
+        // },
         line:{
             color: '#FFF',
             borderBottomColor: '#D8D8D8',
             borderBottomWidth: 2,
         },
+        ContainerProduts:{
+            gap: 10,
+            // backgroundColor: '#444',
+        },
         GraySquare:{ //caixa cinza
             backgroundColor: '#252A32',
             borderRadius: 23,
-            width: '149px',
+            width: '160px',
             height: '245.68px',
             zIndex: 1,
             alignItems: 'center',
             marginRight: 15,  
-            marginLeft: 20    
+            marginLeft: 20,
+            flexDirection: 'column',
         },
         GraySquare2:{
             // backgroundColor: '#252A32',
@@ -215,31 +354,21 @@ const styles = StyleSheet.create({
             flexDirection: 'row'
     
         },
-        // containerList: {
-        //     flex: 1,
-        //     marginTop: 30,
-        //     marginLeft: 80,
-        //     marginVertical: 80
-        // },
-        title: {
-            fontSize: 20,
+        ListHorizontal:{
+            padding: 10,
+            marginTop: 10,
+            paddingHorizontal: 5,
+            paddingVertical: 10,
+            
+            
+        },
+        ItemListHorizontal: {
+            fontSize: 18,
             marginRight: 20,
-            marginLeft: 30,
-            marginVertical: 0
+            marginLeft: 18,
+            marginVertical: 0,
+            // backgroundColor: "#D17842"
         },
-        MenuOpen:{
-            marginLeft: '5%',
-            position: 'absolute',
-            marginVertical: 15,
-            top: 50
-        },
-        NotificationBell:{
-            top: 55,
-            marginLeft: '85%',
-            marginVertical: 5,
-            position: 'absolute'
-    
-        }
     
     });
     

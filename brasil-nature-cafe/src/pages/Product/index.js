@@ -15,18 +15,18 @@ const ProductScreen = ({ route }) => {
             
             <View style={styles.BoxTransparente}>
                 <View style={styles.ProductInfo}>
-                    <Text style={styles.TextName}>{product.name}</Text>
-                    <Text style={styles.SubTitle}>{product.SubTitle}</Text>
+                    <Text style={styles.TextName}>{product.title}</Text>
+                    <Text style={styles.SubTitle}>{product.description}</Text>
 
                     <View style={styles.InfoRow}>
                         <Text style={styles.Rating}>★ 4.5 (6,879)</Text>
                         <View style={styles.TagContainer}>
                             <View>
-                                <Image
+                                {/* <Image
                                     source={require('../../assets/Vector.png')}
                                     style={styles.ImageBean}
                                     resizeMode='cover'
-                                />
+                                /> */}
                                 <Text style={styles.info}>Bean</Text>
                             </View>
                             <View>
@@ -39,7 +39,7 @@ const ProductScreen = ({ route }) => {
             </View>
 
             <View>
-                <Text style={styles.Description}>{product.Description}</Text>
+                <Text style={styles.Description}>{product.description}</Text>
             </View>
 
             <View style={styles.line}>

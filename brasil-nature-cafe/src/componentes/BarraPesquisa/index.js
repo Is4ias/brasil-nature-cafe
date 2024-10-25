@@ -1,3 +1,5 @@
+import { EvilIcons, Ionicons } from '@expo/vector-icons';
+import iconSet from '@expo/vector-icons/build/Fontisto';
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet} from 'react-native';
 
@@ -17,15 +19,22 @@ const SearchBar= ({ onSearch }) => {
   return (
     <View style={styles.container}>
       <View style={styles.searchBarContainer}>
+        <TouchableOpacity>
+          <Ionicons style={styles.IconSearch}
+            name='search'
+            size={18}
+            color="#52555A"/>
+        </TouchableOpacity>
         <TextInput
           style={styles.searchInput}
-          placeholder="Find Your Coffe..."
+          placeholder="Find Your Coffee..."
           value={query}
           onChange={handleInputChange}
+          color="#52555A"
         />
-        <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
+        {/* <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
           <Text style={{ color: 'white'}}>pesquisa</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
@@ -40,12 +49,12 @@ const styles = StyleSheet.create({
   searchBarContainer: {
     width: '80%',
     backgroundColor: '#252A32', 
-    borderRadius: '15px',
+    borderRadius: '20px',
     padding: 10,
-    margin: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    
+    marginVertical: 10,
+    marginTop: 40
   },
   
   searchInput:{
@@ -57,14 +66,17 @@ const styles = StyleSheet.create({
     fontSize: 15,
     height: '100%' ,
   },
+  IconSearch: {
+    padding: 5
+  }
 
-  searchButton:{
-    backgroundColor: '#D17842', 
-    borderRadius: 23,
-    padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
- },
+//   searchButton:{
+//     backgroundColor: '#D17842', 
+//     borderRadius: 23,
+//     padding: 10,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//  },
 });
 
 export default SearchBar;

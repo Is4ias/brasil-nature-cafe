@@ -1,10 +1,7 @@
 import React from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, Dimensions } from 'react-native';
-import SizeButton from '../../componentes/SizeButton';
-import Button from '../../componentes/Button';
 import Footer from '../../componentes/Footer';
-import Shoes from '../../componentes/Shoes';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
 
 export default function Detail2({ navigation }) {
     navigation.setOptions({
@@ -32,13 +29,14 @@ return (
                             
                             <View style={styles.InfoRow}>
                                 <Text style= {styles.Rating}>★ 4.5 (6,879)</Text>
+                                
                                 <View style={styles.TagContainer}>
                                     <View>
-                                        <Image
+                                        {/* <Image
                                             source={require('../../assets/Vector.png')}
                                             style={styles.imageBean}
                                             resizeMode='cover'
-                                        />
+                                        /> */}
                                         <Text style={styles.info}>Bean</Text>
                                     </View>
                                     
@@ -46,7 +44,6 @@ return (
                                         <Text style={styles.info}>Milk</Text>
                                     </View>
                                 </View> 
- 
                             </View>                 
                     </View>
                 </View>
@@ -56,7 +53,7 @@ return (
                 <Dot/>
             </View> */}
 
-            <View style={styles.textContent}>
+            <View>
                 <Text style={styles.textContent}>
                     Nossa receita exclusiva, com 20% de teor de chocolate, 
                     é cuidadosamente elaborada para garantir uma mistura equilibrada, 
