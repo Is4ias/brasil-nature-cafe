@@ -6,17 +6,6 @@ import { Entypo } from "@expo/vector-icons";
 export default function Favoritos() {
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>Favoritos</Text>
-
-            <View style={styles.box}>
-
-            </View>
-        
-        
-        
-        
-        
-        
         
         
         

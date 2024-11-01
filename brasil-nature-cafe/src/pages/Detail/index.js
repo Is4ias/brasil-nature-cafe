@@ -1,84 +1,93 @@
-import React, { useEffect } from "react";
-import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+import React from 'react';
+import { View, Text, Image, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import Footer from '../../componentes/Footer';
 
-export default function Detail({ route, navigation}) {
-    const { product } = route.params;
 
-    useEffect(() => {
-        navigation.setOptions({
-            headerTitle: "PRODUTO ESCOLHIDO"
-        });
-    }, [navigation])
-    
-    return (
-        <View style={styles.Container}>
-            <Image 
-                source={{ uri: product.image }} 
-                style={styles.styleImage}
-                resizeMode="cover"
-            />
-            <View style={styles.boxTransparent}>
-                <Text style={styles.nomeProduto}>{product.title}</Text>
-                <Text style={styles.subTitle}>With Steamed Milk</Text> 
-                
-                <Text style={styles.pontuacao}>★ 4.5 (6,879)</Text> 
-                <View style={styles.InfoRow}>
-                    <View>
-                        {/* <Image
-                            source={require('../../assets/Vector.png')}
-                            style={styles.imageBeen}
-                            resizeMode="cover"
-                        /> */}
-                        <Text style={StyleSheet.ingredientes}>{product.ingredients}</Text>
+
+export default function Detail({ navigation, route }) {
+    navigation.setOptions({
+        headerTitle: "PRODUTO ESCOLHIDO" 
+    })
+    const { item } = route.params;
+
+
+return (
+    <ScrollView style={styles.container}>
+        <View>
+            <View>
+                <Image
+                    source={{ uri: item.image}}
+                    style={styles.image}
+                    resizeMode="cover"  
+                />
+
+                <View style={styles.boxTransparente}>
+                    <View style={styles.productInfo}>
+                        <Text style={styles.texTitle}>{item.title}</Text>
+                            <Text style= {styles.SubTitle}>From africa</Text>
+                            
+                            <View style={styles.InfoRow}>
+                                <Text style= {styles.Rating}>★ 4.5 (6,879)</Text>
+                                
+                                {/* <View style={styles.TagContainer}>
+                                    <View>
+                                        <Image
+                                            source={require('../../assets/Vector.png')}
+                                            style={styles.imageBean}
+                                            resizeMode='cover'
+                                        />
+                                        <Text style={styles.info}>{item.ingredients}</Text>
+                                    </View>
+                                    
+                                    <View>
+                                        <Text style={styles.info}>Milk</Text>
+                                    </View>
+                                </View>  */}
+                            </View>                 
                     </View>
-
-                    <View>
-                        {/* <Image
-                            source={require('../../assets/Vector.png')}
-                            style={styles.imageBeen}
-                            resizeMode="cover"
-                        /> */}
-                        <Text style={styles.ingredientes}>{product.ingredients}</Text>
-                    </View>
-                    
                 </View>
 
-                <Text>Medium Roasted</Text>
-                
-                <View>
-                    <Text>Descripition</Text>
-                    <Text style={styles.TextDescription}>{product.description}</Text>  
-                </View>
-                <Text>SIZE</Text>
             </View>
 
-            <Text style={styles.price}>4.20</Text>
+            <View>
+                <Text style={styles.textContent}>{item.description}</Text>
+            </View>
 
+
+            <View style={styles.line}>
+                <Footer>
+                    
+                </Footer>
+            </View>
         </View>
-    )
+    </ScrollView>
+    );
 }
+
 const styles = StyleSheet.create({
-    Container:{
-        flex: 1,
-        backgroundColor: "#0C0F14",
+    container:{
+        flex:1,
         width: '100%',
         height: '50%',
-        // width: Dimensions.get('window').width,
-        // height: Dimensions.get('window').height
+        backgroundColor: "#0C0F14"
     },
-    styleImage:{
+    image:{
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height / 1.5
+        height: Dimensions.get('window').height / 1.5 
     },
-    boxTransparent:{
-        position: 'absolute',
-        bottom: 0,
-        width: '100%',
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        padding: 20 ,
-        borderRadius: 20,
+    title:{
+        //fontFamily: 'Anton_400Regular',
+        paddingHorizontal: '2%',
+        color: '#FFF',
     },
-    nomeProduto:{
+    textContent:{
+        fontSize: 16,
+        lineHeight: 25,
+        marginVertical: '2%',
+        paddingHorizontal: '2%',
+        color: '#FFF'
+    },
+    texTitle:{
         fontSize: 22,
         fontWeight: 'bold',
         marginVertical: '2%',
@@ -86,32 +95,51 @@ const styles = StyleSheet.create({
         marginLeft: 8,
         marginBottom: 20
     },
-    subTitle:{
+    textList:{
+        fontSize: 16,
+        lineHeight: 25,
+    },
+    boxTransparente:{
+        position:'absolute',
+        bottom: 0,
+        width: '100%',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        padding: 20,
+        borderRadius: 20
+    },
+    productInfo:{
+        flexDirection:'column',
+
+    },
+    SubTitle:{
         fontSize: 16,
         color: '#ddd',
         marginBottom: 10,
         marginLeft: 10
+
     },
     InfoRow:{
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: "center",
     },
-    TextDescription:{
-        fontSize: 16,
-        lineHeight: 25,
-        marginVertical: '2%',
-        paddingHorizontal: '2%',
-        color: '#FFF'
+    Rating:{
+        color:"#fff",
+        fontSize: 14,
+
     },
-    ingredientes:{
+    TagContainer:{
+        flexDirection: 'row',
+    },
+    info:{
         backgroundColor: '#252A32',
         color: '#fff',
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+        borderRadius: '10px',
+        marginLeft: 8,
+        width: '55.71px',
+        height: '55.71px',
     },
-    price:{
-        backgroundColor: '#252A32',
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: '#FFF'
-    },
-})
+    
+});

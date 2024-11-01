@@ -3,16 +3,20 @@ import { View, Text, StyleSheet,TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 
+// ARRUMAR ESSE BOTÃO 
+// LINK DO CHAT GPT: https://chatgpt.com/c/670672d7-d320-800b-8758-b18e750fc461
+
 
 export default function Button() {
     const navigation = useNavigation();
-    
+
+
     const navigateToShoppingCart = () => {
         navigation.navigate('ShoppingCart');
     };       
  return (
     <View style={styles.FooterContainer}>
-      {/* Seletor de tamanho */}
+      
       <View style={styles.sizeContainer}>
         <Text style={styles.label}>Size</Text>
         <View style={styles.sizeOptions}>
@@ -80,7 +84,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#1a1a1a",
         padding: 20,
         borderTopWidth: 1,
-        borderTopColor: "333",
+        borderTopColor: "#333",
     },
     sizeContainer: {
         marginBottom: 20,
@@ -111,7 +115,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 16,
     },
-    princeContainer: {
+    priceContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: 20,

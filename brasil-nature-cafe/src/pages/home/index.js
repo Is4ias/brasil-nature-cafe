@@ -6,13 +6,8 @@ import BarraPesquisa from '../../componentes/BarraPesquisa';
 import DATA from '../../componentes/ListaHorizontal/MenuHorizontal';
 import axios from 'axios';
 import ImageList from '../../componentes/CardapioEspecial';
-import Routes from '../../../Router';
-import NotificationsPage from '../../pages/NotificationsScreen';
-import Button from '../../componentes/Button';
+import InfoProdcts from '../../componentes/InfoProducts';
 
-
-// import ShoppingCartScreen from '../ShoppingCart';
-// import MyAccount from '../Account';
 
 
 
@@ -67,8 +62,8 @@ export default function Home() {
 
     const renderItemProduct = ({ item }) => (
         <View style={styles.GraySquare}>
-            <Pressable style={{ position: 'relative'}}>
-                <Image source={{ uri: item.image }} style={styles.imageProduto} />
+            <Pressable style={{ position: 'relative'}} onPress={navigateToDetail}>
+                <Image source={{ uri: item.image }} style={styles.imageProduto}/>
 
                 <View style={styles.stars}>
                     <AntDesign name='star' color="#FFFF00" size={12}/>
@@ -77,46 +72,23 @@ export default function Home() {
             </Pressable>
 
             <Text style={styles.nameProduto}>{item.title}</Text>
-
-            <View style={{ flexDirection: 'row' , alignItems: 'center', marginTop: 8}}>
-                <View style={{ flexDirection: 'row', marginHorizontal: 50, marginLeft: 2}}>
-                    <TouchableOpacity>
-                        <FontAwesome
-                            name="dollar"
-                            size={20}
-                            color="#FF8C00"/>
-                        </TouchableOpacity>
-                    <Text style={styles.precoProduto}>4.20</Text> 
-                </View>
-                
-                
-                <Pressable>
-                    <TouchableOpacity>
-                        <Entypo
-                            name='circle-with-plus'
-                            color="#FF8C00"
-                            size={30}
-                        />
-                    </TouchableOpacity>
-                </Pressable>
-          </View>
-
-          
+            
+            <InfoProdcts></InfoProdcts>
+        
         </View>
+        
       );
     
     
-    const navigateToDetail = ( ItemP ) => {
-        navigation.navigate('Detail2', { product: ItemP });
-    };
+    const navigateToDetail = ( product ) => {
+        navigation.navigate('Detail', { product });
+    }
     const navigateToNotification = () => {
         navigation.navigate('NotificationsScreen');
     }
 
 
 const navigation = useNavigation();
-
-
 
 return (
     <View style={styles.container}>
@@ -136,23 +108,17 @@ return (
                                 />
                         </View>
 
-                        
                         <Entypo style={ styles.NotificationBell} onPress={navigateToNotification}
                             name="bell"
                             size={28}
                             color="#52555A"
                         />
-
                 </TouchableOpacity>
             </View>
             
-
-        
-
             <View style={styles.textContainer}>
                 <Text style={[styles.Title]}>Find the best{'\n'}Coffee for you</Text>
             </View>  
-
 
             <BarraPesquisa>
             </BarraPesquisa>
@@ -177,41 +143,29 @@ return (
                             data={products}
                             keyExtractor={(item) => item.id.toString()}
                             renderItem={renderItemProduct}
-                            onPress={navigateToDetail}
-                            
-        
                         />
 
                         <Text style={styles.Title2}>Special for you</Text>
 
                         <View style={styles.ContainerProduts}>
-                                <FlatList
-                                    horizontal
-                                    data={products}
-                                    keyExtractor={(item) => item.id.toString()}
-                                    renderItem={renderItemProduct}
-                                 />
-                            
+                            <FlatList
+                                horizontal
+                                data={products}
+                                keyExtractor={(item) => item.id.toString()}  
+                                renderItem={renderItemProduct}
+                            />
                         </View>
 
                         <Text style={styles.Title2}>Special coffee</Text>
 
-                        <ImageList
-                        ></ImageList>
-
+                        <ImageList></ImageList>
                     </ScrollView>
                 </View>
-                
-    
-                
-                
             </ScrollView>
         </ScrollView>
 
     </View>  
   );
- 
-
 }
 
 const styles = StyleSheet.create({
@@ -223,14 +177,11 @@ const styles = StyleSheet.create({
         headerTop:{
             justifyContent:'space-between',
             flexDirection: 'column'
-            // justifyContent: 'center'
         },
         containerLogo:{
             flexDirection: 'row',
             justifyContent:"center",
             alignItems: 'center',
-            // backgroundColor: '#DC3535'
-            
         },
         imageLogo: {
             width: 100,
@@ -244,11 +195,9 @@ const styles = StyleSheet.create({
             top: 50
         },
         NotificationBell:{
-            top: 55,
+            top: 60,
             marginLeft: '85%',
-            marginVertical: 5,
-            position: 'absolute'
-    
+            position: 'absolute',
         },
         imageProduto:{
             width: '138px',
@@ -275,8 +224,7 @@ const styles = StyleSheet.create({
             fontSize: 18,
             color: '#FFF',
             fontWeight: 'bold',
-            marginLeft: 6
-            
+            marginLeft: 6 
         },
         nameProduto:{
             fontSize: 14,
@@ -289,10 +237,8 @@ const styles = StyleSheet.create({
             color: '#FFF',
             marginVertical: '2%',
             marginHorizontal: '5%',
-            // backgroundColor: '#DCDCDC',
             alignSelf: 'flex-start',
-            width: '70%',
-            
+            width: '70%',   
         },
         Title:{
             color: '#FFF',
@@ -300,8 +246,6 @@ const styles = StyleSheet.create({
             fontSize: 30,
             marginHorizontal: '4%',
             marginTop: 50,
-            
-            
         },
         containerList:{
             flex: 1,

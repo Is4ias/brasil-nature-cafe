@@ -1,73 +1,69 @@
-import {Image, View, StyleSheet, ScrollView, Text, TouchableOpacity, Dimensions, LogBox, ImageBackground, Button} from 'react-native';
+import {Image, View, StyleSheet, ScrollView, Text, TouchableOpacity, Dimensions, LogBox, ImageBackground, Button, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, Entypo, Feather, FontAwesome, MaterialIcons } from '@expo/vector-icons';
-import { Grid, Info, User } from 'react-native-feather';
+import OpenURLButton from '../../pages/Account/linkedin';
+import OpenURLButton2 from '../../pages/Account/guithub';
+import OpenURLButton3 from '../../pages/Account/instagram';
 
 
 export default function MyAccount(){
+    const navigation = useNavigation();
+
+    const navigateToHome = () => (
+    navigation.navigate('home')
+)
     return (
         <View style={styles.Container}>
-                <ImageBackground
+            {/* <Pressable>
+            <ImageBackground
                     source={require('../../assets/cafe1.jpg')}
                     style={styles.ImageBackground}
                     resizeMode='cover'
+                    onPress={navigateToHome}
                 />
+            </Pressable> */}
+                
 
-                <TouchableOpacity style={styles.ContainerLogo}>
+                {/* <TouchableOpacity style={styles.ContainerLogo}>
                     <Image
                         source={require('../../assets/rıbeirosss.png')}
                         style={styles.Logo}
                         />         
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
-                <TouchableOpacity>
-                    <View style={styles.GraySquare3}> 
-                        <Image
-                            source={require('../../assets/kilerbean.png')}
-                            style={styles.MinhaFt}
-                        />
+                
+                <View style={styles.GraySquare3}> 
+                    <Image
+                        source={require('../../assets/kilerbean.png')}
+                        style={styles.MinhaFt}
+                    />
 
-                        <View style={styles.ContainerInfo}>
-                            <Text style={styles.Name}>Isaías Ribeiro</Text>
-                            <Text style={styles.UserID}>Usuário 456.456</Text>
-                            <View>
-                                <View style={styles.searchBarContainer}>
-                                    <Text>E-mail: killerCafe@gmail.com</Text>
-                                </View>
-                                <View style={styles.searchBarContainer}>
-                                    <Text>Number: 987654321</Text>
-                                </View>
-                                
+                    <View style={styles.ContainerInfo}>
+                        <Text style={styles.Name}>Isaías Ribeiro</Text>
+                        <Text style={styles.UserID}>Usuário 456.456</Text>
+                        <View>
+                            <View style={styles.searchBarContainer}>
+                                <Text styles={{ color: '#FFF'}}>E-mail: killerCafe@gmail.com</Text>
                             </View>
-
-                            <TouchableOpacity style={styles.IconsFooter}>
-                                <AntDesign
-                                    name="linkedin-square"
-                                    color="#FFF"
-                                    size={28}
-                                />
-                                <FontAwesome
-                                    name="github-square"
-                                    size={28}
-                                    color="#FFF"
-                                />
-                                <Entypo
-                                    name="instagram"
-                                    color="#FFF"
-                                    size={28}
-                                />
-                            </TouchableOpacity>
-
+                            <View style={styles.searchBarContainer}>
+                                <Text style={{ color: '#FFFFFF'}}>Number: 987654321</Text>
+                            </View>
                         </View>
+
+                        <TouchableOpacity style={styles.IconsFooter}>
+                            <OpenURLButton></OpenURLButton>
+                            <OpenURLButton2></OpenURLButton2>
+                            <OpenURLButton3></OpenURLButton3>
+                        </TouchableOpacity>
                     </View>
-                </TouchableOpacity>
+                </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     Container:{
-        //backgroundColor: '#0C0F14',
+        backgroundColor: '#0C0F14',
         flex: 1,
     },    
     ImageBackground:{
@@ -91,14 +87,14 @@ const styles = StyleSheet.create({
         
     },
     GraySquare3: {
-        backgroundColor: 'rgba(0,0,0,0.7)',
+        backgroundColor: 'rgba(0,0,0,0.9)',
         borderRadius: 23,
         width: '85%',
         height: 550,
         position: 'absolute',
         bottom: 0,   
         alignSelf: 'center',
-        marginVertical: 100
+        marginVertical: 180
     },
     ContainerInfo: {
         marginLeft: 15,

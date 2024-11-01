@@ -10,10 +10,9 @@ import Home from './src/pages/home';
 import ShoppingCartScreen from './src/pages/ShoppingCart';
 import NotificationsPage from './src/pages/NotificationsScreen';
 import Detail from './src/pages/Detail';
-import Detail2 from './src/pages/DetailDois';
 import MyAccount from './src/pages/Account';
 import Favoritos from './src/pages/Favorites';
-import ProductScreen from './src/pages/Product';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -38,20 +37,20 @@ function Tabs() {
           }} 
         />
 
-       <Tab.Screen 
-          name="ShoppingCart" 
-          component={ShoppingCartScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => <Ionicons name="cart" color={color} size={size}/>,
-            tabBarLabel: 'Shopping Cart'
-          }}/>
-
         <Tab.Screen 
           name="Favorites" 
           component={Favoritos}
           options={{
             tabBarIcon:({ color, size }) => <Foundation name="heart" color={color} size={size}/>,
             tabBarLabel: 'Favorites'
+          }}/>
+
+        <Tab.Screen 
+          name="ShoppingCart" 
+          component={ShoppingCartScreen}
+          options={{
+            tabBarIcon: ({ color, size }) => <Ionicons name="cart" color={color} size={size}/>,
+            tabBarLabel: 'Shopping Cart'
           }}/>
 
        <Tab.Screen 
@@ -71,7 +70,6 @@ const Routes = () => {
   return (
      <NavigationContainer>
        <Stack.Navigator>
-
          <Stack.Screen
            name="home"
            component={Tabs}
@@ -88,22 +86,10 @@ const Routes = () => {
             )
           }}
          />
-  
+ 
          <Stack.Screen
            name="Detail"
            component={Detail}
-           options={{
-             headerRight: () => (
-               <TouchableOpacity style={{ marginRight: 15 }}>
-                 <Feather name="shopping-cart" size={24} color="black" />
-               </TouchableOpacity>
-             ),
-           }}
-         />
- 
-         <Stack.Screen
-           name="DetailDois"
-           component={Detail2}
            options={{
              headerRight: () => (
                <TouchableOpacity style={{ marginRight: 15 }}>
@@ -119,7 +105,7 @@ const Routes = () => {
           options={{
             headerLeft: () => (
               <TouchableOpacity style={{ marginLeft: 15}}>
-                <Feather name="arrow-left" size={24} color="black"></Feather>
+                <Feather name="arrow-left" size={24} color="#DC3535"></Feather>
               </TouchableOpacity>
             )
           }}>
@@ -132,17 +118,6 @@ const Routes = () => {
             headerLeft: () => (
               <TouchableOpacity style={{ marginLeft: 15}}>
                 <Feather name="arrow-left" size={24} color="#DC3535"></Feather>
-              </TouchableOpacity>
-            )
-          }}/>
-
-         <Stack.Screen
-          name="Product"
-          component={ProductScreen}
-          options={{
-            headerRight: () => (
-              <TouchableOpacity style={{ marginRight: 15}}>
-                <Feather name='shopping-cart' size={24} color="#DC3535"></Feather>
               </TouchableOpacity>
             )
           }}/>
@@ -164,7 +139,7 @@ const Routes = () => {
             options={{
               headerRight: () => (
                 <TouchableOpacity style={{ marginRight: 15 }}>
-                  <Feather name="shopping-cart" size={24} color="black" />
+                  <Feather name="shopping-cart" size={24} color="#DC3535" />
                 </TouchableOpacity>
               ),
 

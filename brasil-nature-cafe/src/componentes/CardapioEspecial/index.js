@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, Image, StyleSheet, Dimensions} from 'react-native';
-import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import InfoProdcts from '../../componentes/InfoProducts'
 
 const images = [
     { id: '1', source: require('../../assets/cafe1.jpg'), name: 'Café Expresso' },
@@ -38,11 +38,13 @@ const ImageList = () => {
                                 style={styles.image}
                                 resizeMode='cover'
                             />
+                            {/* <Text>{item.name}</Text> */}
                         </View>
+                        <InfoProdcts></InfoProdcts>
                     </View>
                )}
             />
-
+            
         </View>
     )
 }
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
         zIndex: 1,
         alignItems: 'center',
         marginRight: 15,  
-        marginLeft: 20,
+        marginLeft: 8,
         flexDirection: 'column',
     },
     nameProduct: {
