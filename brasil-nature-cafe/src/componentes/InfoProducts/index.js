@@ -11,38 +11,34 @@ export default function ButtonBox() {
     };
     return (
         <View>
-             <View style={{ flexDirection: 'row' , alignItems: 'center', marginTop: 8}}>
-                <View style={{ flexDirection: 'row', marginHorizontal: 50, marginLeft: 2}}>
+            <View style={{ flexDirection: 'row' , alignItems: 'center', marginTop: 8}}>
+                <View style={{ flexDirection: 'row', marginHorizontal: 50, marginLeft: 2, alignItems: 'center', justifyContent: 'center', padding:1}}>
                     <TouchableOpacity>
                         <FontAwesome
                             name="dollar"
-                            size={20}
+                            size={18}
                             color="#FF8C00"/>
                     </TouchableOpacity>
 
                     <Text style={styles.precoProduto}>4.20</Text> 
                 </View>
-                <Ionicons 
-                    name="cart" 
-                    color="#FF8C00" 
-                    size={30}
-                />
+
+                <TouchableOpacity>
+                    <Ionicons 
+                        name="cart" 
+                        color="#FF8C00" 
+                        size={28}
+                        onPress={navigateToShoppingCart}
+                    />
+                </TouchableOpacity>
                 
-                    {/* <TouchableOpacity>
-                        <Entypo 
-                            name='circle-with-plus'
-                            color="#FF8C00"
-                            size={30}
-                            onPress={navigateToShoppingCart}
-                        />
-                    </TouchableOpacity> */}
-          </View>
+            </View>
         </View>
     );
 }
 const styles = StyleSheet.create({
     precoProduto:{
-        fontSize: 18,
+        fontSize: 15,
         color: '#FFF',
         fontWeight: 'bold',
         marginLeft: 6

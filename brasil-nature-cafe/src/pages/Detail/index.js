@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, Dimensions } from 'react-native';
 import Footer from '../../componentes/Footer';
 
 
 
 export default function Detail({ navigation, route }) {
-    navigation.setOptions({
-        headerTitle: "PRODUTO ESCOLHIDO" 
-    })
     const { item } = route.params;
 
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerTitle: "PRODUTO ESCOLHIDO"
+        });
+    }, [navigation]);
+    
+    
 
 return (
     <ScrollView style={styles.container}>
@@ -55,9 +59,7 @@ return (
 
 
             <View style={styles.line}>
-                <Footer>
-                    
-                </Footer>
+                <Footer></Footer>
             </View>
         </View>
     </ScrollView>
@@ -136,10 +138,10 @@ const styles = StyleSheet.create({
         color: '#fff',
         paddingHorizontal: 8,
         paddingVertical: 4,
-        borderRadius: '10px',
+        borderRadius: 10,
         marginLeft: 8,
-        width: '55.71px',
-        height: '55.71px',
+        width: 55.71,
+        height: 55.71,
     },
     
 });

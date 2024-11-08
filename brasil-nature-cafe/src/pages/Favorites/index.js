@@ -6,7 +6,7 @@ import { Entypo } from "@expo/vector-icons";
 export default function Favoritos() {
     return(
         <View style={styles.container}>
-        
+            <Text style={{ color:'#FFF', fontFamily: 'Anton_400Regular', fontSize: 30, alignSelf: 'center', marginTop: 25, fontWeight: 'bold'}}>Favorites</Text>
         
         
         </View>

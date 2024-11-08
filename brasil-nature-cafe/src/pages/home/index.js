@@ -62,12 +62,12 @@ export default function Home() {
 
     const renderItemProduct = ({ item }) => (
         <View style={styles.GraySquare}>
-            <Pressable style={{ position: 'relative'}} onPress={navigateToDetail}>
+            <Pressable style={{ position: 'relative'}} onPress={ () => navigateToDetail(item)}>
                 <Image source={{ uri: item.image }} style={styles.imageProduto}/>
 
                 <View style={styles.stars}>
                     <AntDesign name='star' color="#FFFF00" size={12}/>
-                    <Text style={{ color: '#FFF'}}>4.9</Text>
+                    <Text style={{ color:'#FFF'}}>4.9</Text>
                 </View>
             </Pressable>
 
@@ -85,7 +85,7 @@ export default function Home() {
     }
     const navigateToNotification = () => {
         navigation.navigate('NotificationsScreen');
-    }
+    };
 
 
 const navigation = useNavigation();
@@ -93,25 +93,36 @@ const navigation = useNavigation();
 return (
     <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
+
             <View style={ styles.headerTop }>
                 <TouchableOpacity >
-                        <Entypo style={ styles.MenuOpen} onPress={ console.log("abrir o drawer1") }
+                        <Entypo 
+                            style={ styles.MenuOpen} 
+                            onPress={ console.log("abrir o drawer1") }
                             name="menu"
                             size={28}
                             color="#52555A"
                         />
-                        <View style={styles.containerLogo}>
-                            <Image
-                                source={require('../../assets/rıbeirosss.png')}
-                                style={ styles.imageLogo}  
-                
-                                />
-                        </View>
+                </TouchableOpacity>
 
-                        <Entypo style={ styles.NotificationBell} onPress={navigateToNotification}
+
+                
+                <View style={styles.containerLogo}>
+                    <Image
+                        source={require('../../assets/rıbeirosss.png')}
+                        style={styles.imageLogo}  
+                        resizeMode='contain'
+                    />
+                </View>
+                
+
+                <TouchableOpacity >
+                        <Entypo  
+                            style={styles.NotificationBell}
                             name="bell"
                             size={28}
                             color="#52555A"
+                            onPress={navigateToNotification}
                         />
                 </TouchableOpacity>
             </View>
@@ -175,13 +186,15 @@ const styles = StyleSheet.create({
             backgroundColor: '#0C0F14'
         },
         headerTop:{
-            justifyContent:'space-between',
-            flexDirection: 'column'
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            
+            
         },
         containerLogo:{
-            flexDirection: 'row',
-            justifyContent:"center",
-            alignItems: 'center',
+            backgroundColor: '#D17842',
+    
         },
         imageLogo: {
             width: 100,
@@ -189,15 +202,10 @@ const styles = StyleSheet.create({
             marginTop: 15,
         },
         MenuOpen:{
-            marginLeft: '6%',
-            position: 'absolute',
-            marginVertical: 15,
-            top: 50
+            padding: 10
         },
         NotificationBell:{
-            top: 60,
-            marginLeft: '85%',
-            position: 'absolute',
+            padding: 10
         },
         imageProduto:{
             width: '138px',
