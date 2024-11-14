@@ -12,8 +12,6 @@ import InfoProdcts from '../../componentes/InfoProducts';
 
 
 export default function Home() {
-    
-
     const [selectedId, setSelectedId] = useState(null);
 
     const Item = ({ item, onPress, style }) => (
@@ -81,7 +79,7 @@ export default function Home() {
     
     
     const navigateToDetail = ( product ) => {
-        navigation.navigate('Detail', { product });
+        navigation.navigate('Detail', { item: product });
     }
     const navigateToNotification = () => {
         navigation.navigate('NotificationsScreen');

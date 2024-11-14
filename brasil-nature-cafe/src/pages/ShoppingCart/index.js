@@ -1,7 +1,7 @@
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import Button from '../../componentes/Button';
+import Button from '../../componentes/ButtonSize';
 
 
 const ShoppingCartScreen = () => {

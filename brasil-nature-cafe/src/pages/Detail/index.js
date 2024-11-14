@@ -1,6 +1,7 @@
 import React, { useLayoutEffect } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, Dimensions } from 'react-native';
 import Footer from '../../componentes/Footer';
+import Button from '../../componentes/ButtonSize';
 
 
 
@@ -33,20 +34,26 @@ return (
                             <View style={styles.InfoRow}>
                                 <Text style= {styles.Rating}>★ 4.5 (6,879)</Text>
                                 
-                                {/* <View style={styles.TagContainer}>
-                                    <View>
+                                <View style={styles.TagContainer}>
+
+                                    <View style={styles.info}>
+                                        {/* <Text>{item.ingredients}</Text> */}
+
                                         <Image
-                                            source={require('../../assets/Vector.png')}
+                                            source={require('../../assets/Group87.png')}
                                             style={styles.imageBean}
                                             resizeMode='cover'
                                         />
-                                        <Text style={styles.info}>{item.ingredients}</Text>
                                     </View>
                                     
-                                    <View>
-                                        <Text style={styles.info}>Milk</Text>
+                                    <View style={styles.info}>
+                                        <Image
+                                            source={require('../../assets/Vector.png')}
+                                            style={styles.imagen2}
+                                            resizeMode='cover'
+                                        />
                                     </View>
-                                </View>  */}
+                                </View> 
                             </View>                 
                     </View>
                 </View>
@@ -54,13 +61,16 @@ return (
             </View>
 
             <View>
+                <Text style={styles.Desc}>Description</Text>
                 <Text style={styles.textContent}>{item.description}</Text>
             </View>
 
+            <Button></Button>
 
-            <View style={styles.line}>
-                <Footer></Footer>
-            </View>
+           
+
+
+            
         </View>
     </ScrollView>
     );
@@ -82,20 +92,26 @@ const styles = StyleSheet.create({
         paddingHorizontal: '2%',
         color: '#FFF',
     },
+    Desc:{
+        color: '#FFF',
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginHorizontal: '6%',
+        marginTop: 13
+    },
     textContent:{
-        fontSize: 16,
+        fontSize: 14,
         lineHeight: 25,
         marginVertical: '2%',
         paddingHorizontal: '2%',
-        color: '#FFF'
+        color: '#FFF',
+        marginHorizontal: 8
     },
     texTitle:{
         fontSize: 22,
         fontWeight: 'bold',
-        marginVertical: '2%',
         color: '#FFF',
         marginLeft: 8,
-        marginBottom: 20
     },
     textList:{
         fontSize: 16,
@@ -116,7 +132,7 @@ const styles = StyleSheet.create({
     SubTitle:{
         fontSize: 16,
         color: '#ddd',
-        marginBottom: 10,
+        marginBottom: 30,
         marginLeft: 10
 
     },
@@ -124,6 +140,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: "center",
+        
     },
     Rating:{
         color:"#fff",
@@ -132,9 +149,17 @@ const styles = StyleSheet.create({
     },
     TagContainer:{
         flexDirection: 'row',
+        justifyContent: 'center',
+        backgroundColor: '#D17842'
+    },
+    imageBean:{
+        color: '#D17842',
+    },
+    imagen2:{
+        color:'#D17842'
     },
     info:{
-        backgroundColor: '#252A32',
+        backgroundColor: '#52555A',
         color: '#fff',
         paddingHorizontal: 8,
         paddingVertical: 4,

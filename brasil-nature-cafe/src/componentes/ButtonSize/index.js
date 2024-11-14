@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet,TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -10,49 +10,59 @@ import { useNavigation } from '@react-navigation/native';
 export default function Button() {
     const navigation = useNavigation();
 
+    const [ selectedSize, setSelectedSize ] = useState(null);
+    const [ price, setPrice ] = useState(0.0)
 
-    const navigateToShoppingCart = () => {
-        navigation.navigate('ShoppingCart');
-    };       
- return (
-    <View style={styles.FooterContainer}>
-      
-      <View style={styles.sizeContainer}>
-        <Text style={styles.label}>Size</Text>
-        <View style={styles.sizeOptions}>
-          {['250ml', '500ml', '1000ml'].map((size) => (
-            <TouchableOpacity
-              key={size}
-              style={[
-                styles.sizeButton,
-                selectedSize === size && styles.selectedSizeButton,
-              ]}
-              onPress={() => setSelectedSize(size)}
-            >
-              <Text
+
+    // const navigateToShoppingCart = () => {
+    //     navigation.navigate('ShoppingCart');
+    // };       
+
+    return (
+      <View style={styles.FooterContainer}>
+        <View style={styles.sizeContainer}>
+
+          <Text style={styles.label}>Size</Text>
+          <View style={styles.sizeOptions}>
+            {['250ml', '500ml', '800ml'].map((size) => (
+              <TouchableOpacity
+                key={size}
                 style={[
-                  styles.sizeText,
-                  selectedSize === size && styles.selectedSizeText,
+                  styles.sizeButton,
+                  selectedSize === size && styles.selectedSizeButton,
                 ]}
+                onPress={() => setSelectedSize(size)}
               >
-                {size}
-              </Text>
-            </TouchableOpacity>
-          ))}
+                <Text
+                  style={[
+                    styles.sizeText,
+                    selectedSize === size && styles.selectedSizeText,
+                  ]}
+                >
+                  {size}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
+
+        <View style={styles.priceContainer}>
+          <Text style={styles.priceText}>Price</Text>
+          <Text style={styles.priceAmount}>${price.toFixed(2)}</Text>
+
+          {/* <TouchableOpacity style={styles.addToCartButton}>
+            <Text style={styles.addToCartText}>Add to Cart</Text>
+          </TouchableOpacity> */}
+
+          {/* <Button style={styles.addToCartButton}>
+            <Text style={styles.addToCartText}>Add to Cart</Text>
+          </Button> */}
+
+        </View>
+
+  
+        
       </View>
-
-
-      <View style={styles.priceContainer}>
-        <Text style={styles.priceText}>Price</Text>
-        <Text style={styles.priceAmount}>${price.toFixed(2)}</Text>
-      </View>
-
-      {/* Botão Add to Cart */}
-      <TouchableOpacity style={styles.addToCartButton} onPress={navigateToShoppingCart}>
-        <Text style={styles.addToCartText}>Add to Cart</Text>
-      </TouchableOpacity>
-    </View>
 
     
   );
@@ -81,7 +91,7 @@ const styles = StyleSheet.create({
         marginVertical: '2%',
     },
     FooterContainer:{
-        backgroundColor: "#1a1a1a",
+        // backgroundColor: "#1a1a1a",
         padding: 20,
         borderTopWidth: 1,
         borderTopColor: "#333",
@@ -116,9 +126,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     priceContainer: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-between',
         marginBottom: 20,
+        backgroundColor: '#1a1a1a'
     },
     priceText: {
         color: '#fff',
