@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet,TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet,TouchableOpacity, Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
-
-// ARRUMAR ESSE BOTÃO 
-// LINK DO CHAT GPT: https://chatgpt.com/c/670672d7-d320-800b-8758-b18e750fc461
-
+import { FontAwesome } from '@expo/vector-icons';
+import ButtonAlert from '../ButtonAddCart';
 
 export default function Button() {
     const navigation = useNavigation();
 
     const [ selectedSize, setSelectedSize ] = useState(null);
-    const [ price, setPrice ] = useState(0.0)
+    const [ price, setPrice ] = useState(4.20)
 
+    const handleAddToCart = () => {
+      if (! selectedSize) {
+        Alert.alert('Atenção!', 'Por favor, selecione um tamanho antes de adicionar ao carrinho!');
+      }else {
+        Alert.alert('Sucesso!', `O produto (${selectedSize}) foi adicionado ao carrinho!`);
+      }
+    }
 
     // const navigateToShoppingCart = () => {
     //     navigation.navigate('ShoppingCart');
@@ -23,6 +27,7 @@ export default function Button() {
         <View style={styles.sizeContainer}>
 
           <Text style={styles.label}>Size</Text>
+
           <View style={styles.sizeOptions}>
             {['250ml', '500ml', '800ml'].map((size) => (
               <TouchableOpacity
@@ -47,21 +52,22 @@ export default function Button() {
         </View>
 
         <View style={styles.priceContainer}>
-          <Text style={styles.priceText}>Price</Text>
-          <Text style={styles.priceAmount}>${price.toFixed(2)}</Text>
+          <View styles={{ flexDirection: 'column'}}>
+            <Text style={styles.priceText}>Price</Text>
+            <View style={{ flexDirection: 'row', alignItems:'center', justifyContent: 'center', gap: 5, }}>
+              <FontAwesome
+                name="dollar"
+                size={18}
+                color="#d9793d"
+                />
+              <Text style={styles.priceAmount}>{price.toFixed(2)}</Text>
+            </View>
+            
+          </View>
 
-          {/* <TouchableOpacity style={styles.addToCartButton}>
-            <Text style={styles.addToCartText}>Add to Cart</Text>
-          </TouchableOpacity> */}
 
-          {/* <Button style={styles.addToCartButton}>
-            <Text style={styles.addToCartText}>Add to Cart</Text>
-          </Button> */}
-
+        <ButtonAlert></ButtonAlert>
         </View>
-
-  
-        
       </View>
 
     
@@ -100,9 +106,10 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     label: {
-        color: '#fff',
+        color: '#52555A',
         fontSize: 16,
         marginBottom: 10,
+        fontWeight: 'bold'
     },
     sizeOptions: {
         flexDirection: 'row',
@@ -110,30 +117,33 @@ const styles = StyleSheet.create({
     },
     sizeButton: {
         paddingVertical: 10,
-        paddingHorizontal: 20,
+        paddingHorizontal: 30,
         borderRadius: 10,
         backgroundColor: '#333',
     },
     selectedSizeButton: {
-        backgroundColor: "#d9793d",
+        backgroundColor: "#0C0F14",
+        borderColor: '#d9793d'
     },
     sizeText: {
-        color: '#fff',
+        color: '#FFF',
         fontWeight: 'bold',
     },
     selectedSizeText:{
-        color: '#fff',
-        fontSize: 16,
+        color: '#D17842',
+        fontSize: 18,
+        borderEndColor: 2
     },
     priceContainer: {
-        flexDirection: 'column',
+        flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: 20,
-        backgroundColor: '#1a1a1a'
+        // backgroundColor: '#1a1a1a'
     },
     priceText: {
         color: '#fff',
         fontSize: 16,
+        marginLeft: 8
     },
     priceAmount: {
         color: '#fff',
@@ -145,10 +155,13 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         borderRadius: 10,
         alignItems: 'center',
+        width: '60%',
+        
       },
       addToCartText: {
         color: '#fff',
         fontSize: 18,
         fontWeight: 'bold',
+       
       },
 })

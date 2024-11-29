@@ -90,13 +90,7 @@ const Routes = () => {
          <Stack.Screen
            name="Detail"
            component={Detail}
-           options={{
-             headerRight: () => (
-               <TouchableOpacity style={{ marginRight: 15 }}>
-                 <Feather name="heart" size={24} color="black" onPress={Favoritos}/>
-               </TouchableOpacity>
-             ),
-           }}
+           options={{ headerShown: false}}
          />
 
          <Stack.Screen

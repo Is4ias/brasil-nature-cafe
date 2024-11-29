@@ -16,114 +16,122 @@ export default function MyAccount(){
         <View style={styles.Container}>
             {/* <Pressable>
             <ImageBackground
-                    source={require('../../assets/cafe1.jpg')}
+                    source={require('../../assets/Hot Chocolate.jfif')}
                     style={styles.ImageBackground}
                     resizeMode='cover'
                     onPress={navigateToHome}
                 />
-            </Pressable> */}
+            </Pressable>  */}
                 
 
-                {/* <TouchableOpacity style={styles.ContainerLogo}>
+                <TouchableOpacity style={styles.containerLogo}>
                     <Image
                         source={require('../../assets/rıbeirosss.png')}
-                        style={styles.Logo}
-                        />         
-                </TouchableOpacity> */}
+                        style={styles.imageLogo}  
+                        resizeMode='contain'
+                    />
+                </TouchableOpacity>
 
                 
                 <View style={styles.GraySquare3}> 
-                    <Image
-                        source={require('../../assets/kilerbean.png')}
-                        style={styles.MinhaFt}
-                    />
+                    <View>
+                        <Image
+                            source={require('../../assets/kilerbean.png')}
+                            style={styles.MinhaFt}
+                        />
+                    </View>
+                    
 
                     <View style={styles.ContainerInfo}>
-                        <Text style={styles.Name}>Isaías Ribeiro</Text>
-                        <Text style={styles.UserID}>Usuário 456.456</Text>
-                        <View>
-                            <View style={styles.searchBarContainer}>
-                                <Text styles={{ color: '#FFF'}}>E-mail: killerCafe@gmail.com</Text>
-                            </View>
-                            <View style={styles.searchBarContainer}>
-                                <Text style={{ color: '#FFFFFF'}}>Number: 987654321</Text>
-                            </View>
+                        <View style={{ justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={styles.Name}>Isaías Ribeiro</Text>
+                            <Text style={styles.UserID}>Usuário 456.456</Text>
                         </View>
-
-                        <TouchableOpacity style={styles.IconsFooter}>
-                            <OpenURLButton></OpenURLButton>
-                            <OpenURLButton2></OpenURLButton2>
-                            <OpenURLButton3></OpenURLButton3>
-                        </TouchableOpacity>
                     </View>
+                    
+                    <View>
+                        <Text style={{ colo: "#FFF"}}>
+                            Phone
+                        </Text>
+                    </View>
+
                 </View>
+                <TouchableOpacity style={styles.IconsFooter}>
+                    <OpenURLButton></OpenURLButton>
+                    <OpenURLButton2></OpenURLButton2>
+                    <OpenURLButton3></OpenURLButton3>
+                </TouchableOpacity>
+
+                
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     Container:{
-        backgroundColor: '#0C0F14',
         flex: 1,
     },    
     ImageBackground:{
         width: Dimensions.get('window') .width,
         height: Dimensions.get('window').height,
-
+        zIndex: 1,
     },
-    ContainerLogo: {
-        backgroundColor: '#AEAEAE',
-        position: 'absolute',
-        top: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%'
+    containerLogo: {
+        backgroundColor: '#D17842',
+        margn
+        // alignItems: 'center',
+        // justifyContent: 'center'
     },
-    Logo:{
+    imageLogo:{
         width: 120,
         height: 120,
-        marginTop: 10,
+        marginTop: 15,
         alignSelf:'center',
         
     },
     GraySquare3: {
-        backgroundColor: 'rgba(0,0,0,0.9)',
+        backgroundColor: 'rgba(0,0,0,0.8)',
         borderRadius: 23,
-        width: '85%',
-        height: 550,
+        width: '80%',
         position: 'absolute',
-        bottom: 0,   
-        alignSelf: 'center',
-        marginVertical: 180
+        zIndex: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '40%',
+        padding: 10,
+        marginHorizontal: '10%'
     },
     ContainerInfo: {
         marginLeft: 15,
         marginTop: 20,
-        // backgroundColor: '#FFFF00'
+        
+
     },
-    searchBarContainer: {
-        width: '90%',
-        backgroundColor: '#252A32',
-        borderRadius: '20px',
-        padding: 10,
-        marginVertical: 10,
-        borderColor: '#FFF',
+    // searchBarContainer: {
+    //     width: '90%',
+    //     backgroundColor: '#252A32',
+    //     borderRadius: '20px',
+    //     padding: 10,
+    //     marginVertical: 10,
+    //     borderColor: '#FFF',
         
         
-    },
+    // },
+    
     MinhaFt: {
          width: 100,
          height: 100,
          borderRadius: '80%',
-         position: 'relative',
-         alignSelf: 'flex-start',
          marginTop: 20,
-         marginLeft: 10
+         marginLeft: 10,
+         alignSelf: 'center'
     },
     Name:{
         fontSize: 24,
         fontWeight: 'bold',
         alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
         fontFamily: 'Anton_400Regular',
         color: '#FFF'
     },
@@ -143,9 +151,12 @@ const styles = StyleSheet.create({
     IconsFooter:{
         flexDirection: 'row',
         gap: 10,
-        marginVertical: 100,
-        position: 'relative',
-        alignSelf: 'center'
+        marginVertical: 100,    
+        alignSelf: 'center',
+        justifyContent: 'flex-end',
+        zIndex: 3,
+        position: 'absolute',
+        marginVertical: '180%'
     },
 
 })

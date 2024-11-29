@@ -6,7 +6,7 @@ import { Entypo } from "@expo/vector-icons";
 export default function Favoritos() {
     return(
         <View style={styles.container}>
-            <Text style={{ color:'#FFF', fontFamily: 'Anton_400Regular', fontSize: 30, alignSelf: 'center', marginTop: 25, fontWeight: 'bold'}}>Favorites</Text>
+            <Text style={{ color:'#FFF', fontSize: 30, alignSelf: 'center', marginTop: 25, fontWeight: 'bold'}}>Favorites</Text>
         
         
         </View>
@@ -21,23 +21,23 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
    },
-   image:{
-    justifyContent: 'center'
+//    image:{
+//     justifyContent: 'center'
 
-   },
-   text:{
-    color: '#D17842',
-    fontSize: 40,
-    fontWeight: 'Bold',
-    flexDirection: 'row',
-    alignSelf: 'center',
-    marginTop: 20
-   },
-   box: {
-    width: 100,
-    height: 100,
-    backgroundColor: "#FFF",
-    borderRadius: 23,
+//    },
+//    text:{
+//     color: '#D17842',
+//     fontSize: 40,
+//     fontWeight: 'Bold',
+//     flexDirection: 'row',
+//     alignSelf: 'center',
+//     marginTop: 20
+//    },
+//    box: {
+//     width: 100,
+//     height: 100,
+//     backgroundColor: "#FFF",
+//     borderRadius: 23,
     
-   },
+//    },
 })

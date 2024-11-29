@@ -113,7 +113,6 @@ return (
                     />
                 </View>
                 
-
                 <TouchableOpacity >
                         <Entypo  
                             style={styles.NotificationBell}
@@ -200,10 +199,10 @@ const styles = StyleSheet.create({
             marginTop: 15,
         },
         MenuOpen:{
-            padding: 10
+            marginLeft: 20
         },
         NotificationBell:{
-            padding: 10
+            marginRight: 20
         },
         imageProduto:{
             width: '138px',
