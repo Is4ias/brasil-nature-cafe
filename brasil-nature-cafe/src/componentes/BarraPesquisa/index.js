@@ -25,6 +25,7 @@ const SearchBar= ({ onSearch }) => {
             size={18}
             color="#52555A"/>
         </TouchableOpacity>
+        
         <TextInput
           style={styles.searchInput}
           placeholder="Find Your Coffee..."
@@ -65,6 +66,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     fontSize: 15,
     height: '100%' ,
+    color: '#52555A'
   },
   IconSearch: {
     padding: 5

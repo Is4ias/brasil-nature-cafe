@@ -8,11 +8,15 @@ import { TouchableOpacity} from 'react-native';
 
 import Home from './src/pages/home';
 import ShoppingCartScreen from './src/pages/ShoppingCart';
-import NotificationsPage from './src/pages/NotificationsScreen';
+import NotificationsPage from './src/pages/Notifications';
 import Detail from './src/pages/Detail';
 import MyAccount from './src/pages/Account';
 import Favoritos from './src/pages/Favorites';
-
+import CapuccinoScreen from './src/pages/CapuccinoScreen';
+import ExpressScreen from './src/pages/ExpressScreen';
+import AmericanScreen from './src/pages/AmericanScreen'
+import TraditionalScreen from './src/pages/TraditionalScreen';
+import NoSugarScreen from './src/pages/NoSugarScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -36,6 +40,15 @@ function Tabs() {
             tabBarLabel: 'Início'
           }} 
         />
+
+        {/* <Tab.Screen 
+          name="notification" 
+          component={NotificationsPage}
+          options={{ 
+            tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size}/>,
+            tabBarLabel: 'Início'
+          }} 
+        /> */}
 
         <Tab.Screen 
           name="Favorites" 
@@ -92,6 +105,11 @@ const Routes = () => {
            component={Detail}
            options={{ headerShown: false}}
          />
+        <Stack.Screen name="capuccino" component={CapuccinoScreen} />
+        <Stack.Screen name="express" component={ExpressScreen} />
+        <Stack.Screen name="american" component={AmericanScreen} />
+        <Stack.Screen name="traditional" component={TraditionalScreen} />
+        <Stack.Screen name="no sugar" component={NoSugarScreen} />
 
          <Stack.Screen
           name="Account"
@@ -106,7 +124,7 @@ const Routes = () => {
          </Stack.Screen>
 
          <Stack.Screen
-          name='Favorities'
+          name='Favorites'
           component={Favoritos}
           options={{
             headerLeft: () => (
@@ -117,7 +135,7 @@ const Routes = () => {
           }}/>
 
          <Stack.Screen
-            name="Notificações"
+            name="Notification"
             component={NotificationsPage}
             options={{
               headerRight: () => (

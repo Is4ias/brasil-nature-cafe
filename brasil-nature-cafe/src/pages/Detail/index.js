@@ -41,10 +41,6 @@ return (
                     <Pressable style={styles.iconContainer2}>
                         <AntDesign name="heart" size={17} color={'#FFF'} onPress={console.log("produto favoritado")}/>
                     </Pressable>
-                    
-                    {/* <TouchableOpacity style={styles.iconContainer2}>
-                        <AntDesign name="heart" size={17} color={'#FFF'} onPress={console.log("produto favoritado")}/>
-                    </TouchableOpacity> */}
                 </View>
                 
 
@@ -55,7 +51,7 @@ return (
                             
                             <View style={styles.InfoRow}>
                                 <View style={{ flexDirection:'row', gap: 5, justifyContent: 'center', alignItems:'center'}}>
-                                    <Foundation
+                                    <AntDesign
                                         name="star"
                                         size={18}
                                         color="#D17842"
@@ -77,13 +73,6 @@ return (
                                         />
                                     </View>
                                     
-                                    {/* <View style={styles.info}>
-                                        <Image
-                                            source={require('../../assets/Vector.png')}
-                                            style={styles.imagen2}
-                                            resizeMode='cover'
-                                        />
-                                    </View> */}
                                 </View> 
                             </View>                 
                     </View>
@@ -227,8 +216,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#0C0F14',
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: 310
-        
+        // marginLeft: '300%'
+        marginHorizontal: 300
         
     }
 });

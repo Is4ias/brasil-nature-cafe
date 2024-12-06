@@ -2,38 +2,16 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, BackHandler, FlatList, ActivityIndicator, Pressable } from 'react-native';
 import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
-import BarraPesquisa from '../../componentes/BarraPesquisa';
-import DATA from '../../componentes/ListaHorizontal/MenuHorizontal';
 import axios from 'axios';
 import ImageList from '../../componentes/CardapioEspecial';
 import InfoProdcts from '../../componentes/InfoProducts';
 
+import BarraPesquisa from '../../componentes/BarraPesquisa';
+import CoffeList from '../../componentes/ListaHorizontal/MenuHorizontal';
 
 
 
 export default function Home() {
-    const [selectedId, setSelectedId] = useState(null);
-
-    const Item = ({ item, onPress, style }) => (
-        <TouchableOpacity onPress={onPress} style={[styles.ListHorizontal, style]}>
-            <Text style={[styles.ItemListHorizontal, style]}>{item.title}</Text>
-        </TouchableOpacity>
-    );
-
-    const renderItem2 = ({ item }) => {
-        const color = item.id === selectedId ? '#D17842' : '#52555A';
-
-        return (
-        <Item
-            item={item}
-            onPress={() => setSelectedId(item.id)}
-            style={{ color }}
-    
-        />
-        );
-    };
-
-
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => {
 
@@ -82,9 +60,8 @@ export default function Home() {
         navigation.navigate('Detail', { item: product });
     }
     const navigateToNotification = () => {
-        navigation.navigate('NotificationsScreen');
+        navigation.navigate('Notifications');
     };
-
 
 const navigation = useNavigation();
 
@@ -130,18 +107,7 @@ return (
 
             <BarraPesquisa>
             </BarraPesquisa>
-
-            <View style={ styles.containerList}>
-                <FlatList
-                    horizontal
-                    data={DATA}
-                    renderItem={renderItem2}
-                    keyExtractor={(item) => item.id}
-                    extraData={selectedId}
-                    showsHorizontalScrollIndicator={false}
-                    fontSize={24}>
-                </FlatList>
-            </View>
+            <CoffeList></CoffeList>
 
             <ScrollView vertical showsVerticalScrollIndicator={false}>
                 <View style={styles.ContainerProduts}>
@@ -164,7 +130,7 @@ return (
                             />
                         </View>
 
-                        <Text style={styles.Title2}>Special coffee</Text>
+                        <Text style={styles.Title2}>New products</Text>
 
                         <ImageList></ImageList>
                     </ScrollView>
@@ -186,17 +152,15 @@ const styles = StyleSheet.create({
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
-            
-            
         },
         containerLogo:{
             backgroundColor: '#D17842',
-    
         },
         imageLogo: {
             width: 100,
             height: 120,
-            marginTop: 15,
+            marginTop: 20,
+            alignSelf: 'center'
         },
         MenuOpen:{
             marginLeft: 20
@@ -225,12 +189,6 @@ const styles = StyleSheet.create({
             alignItems: 'center', 
             justifyContent: 'center'
         },
-        precoProduto:{
-            fontSize: 18,
-            color: '#FFF',
-            fontWeight: 'bold',
-            marginLeft: 6 
-        },
         nameProduto:{
             fontSize: 14,
             fontWeight: 'bold',
@@ -252,12 +210,6 @@ const styles = StyleSheet.create({
             marginHorizontal: '4%',
             marginTop: 50,
         },
-        containerList:{
-            flex: 1,
-            paddingHorizontal: 20,
-            marginTop: 10,
-            padding: 10
-        },
         Title2:{
             color: '#FFF',
             fontFamily: 'Anton_400Regular',
@@ -266,20 +218,8 @@ const styles = StyleSheet.create({
             marginTop: 60,
             marginVertical: 30,
         },
-        // Text3:{
-        //     fontSize: 15,
-        //     marginTop: 20,
-        //     margin: 15,
-        //     color: '#FFF',
-        // },
-        line:{
-            color: '#FFF',
-            borderBottomColor: '#D8D8D8',
-            borderBottomWidth: 2,
-        },
         ContainerProduts:{
             gap: 10,
-            // backgroundColor: '#444',
         },
         GraySquare:{ //caixa cinza
             backgroundColor: '#252A32',
@@ -292,32 +232,5 @@ const styles = StyleSheet.create({
             marginLeft: 20,
             flexDirection: 'column',
         },
-        GraySquare2:{
-            // backgroundColor: '#252A32',
-            backgroundColor: '#333',
-            borderRadius: 28,
-            width: '90%',
-            height: 'auto',
-            marginLeft: 20,
-            marginVertical: 20,
-            flexDirection: 'row'
-    
-        },
-        ListHorizontal:{
-            padding: 10,
-            marginTop: 10,
-            paddingHorizontal: 5,
-            paddingVertical: 10,
-            
-            
-        },
-        ItemListHorizontal: {
-            fontSize: 18,
-            marginRight: 20,
-            marginLeft: 18,
-            marginVertical: 0,
-            // backgroundColor: "#D17842"
-        },
-    
     });
     

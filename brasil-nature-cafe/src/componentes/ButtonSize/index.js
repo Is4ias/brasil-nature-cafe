@@ -18,14 +18,10 @@ export default function Button() {
       }
     }
 
-    // const navigateToShoppingCart = () => {
-    //     navigation.navigate('ShoppingCart');
-    // };       
-
     return (
       <View style={styles.FooterContainer}>
-        <View style={styles.sizeContainer}>
 
+        <View style={styles.sizeContainer}>
           <Text style={styles.label}>Size</Text>
 
           <View style={styles.sizeOptions}>
@@ -54,13 +50,13 @@ export default function Button() {
         <View style={styles.priceContainer}>
           <View styles={{ flexDirection: 'column'}}>
             <Text style={styles.priceText}>Price</Text>
-            <View style={{ flexDirection: 'row', alignItems:'center', justifyContent: 'center', gap: 5, }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', gap: 5, position: 'relative', height: 40, width: 100 }}>
               <FontAwesome
                 name="dollar"
-                size={18}
+                size={20}
                 color="#d9793d"
                 />
-              <Text style={styles.priceAmount}>{price.toFixed(2)}</Text>
+                <Text style={styles.priceAmount}>{price.toFixed(2)}</Text>
             </View>
             
           </View>
@@ -76,7 +72,8 @@ export default function Button() {
 const styles = StyleSheet.create({
     container:{
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+  
     },
     btnContainer:{
         width: '40%', //pra n pegar toda a tela
@@ -103,7 +100,7 @@ const styles = StyleSheet.create({
         borderTopColor: "#333",
     },
     sizeContainer: {
-        marginBottom: 20,
+        marginBottom: 15,
     },
     label: {
         color: '#52555A',
@@ -114,20 +111,22 @@ const styles = StyleSheet.create({
     sizeOptions: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        marginLeft: 20,
+        marginRight: 20
     },
     sizeButton: {
         paddingVertical: 10,
         paddingHorizontal: 30,
         borderRadius: 10,
-        backgroundColor: '#333',
+        backgroundColor: '#252A32',
     },
     selectedSizeButton: {
         backgroundColor: "#0C0F14",
         borderColor: '#d9793d'
     },
     sizeText: {
-        color: '#FFF',
-        fontWeight: 'bold',
+        color: '#AEAEAE',
+        fontWeight: '400',
     },
     selectedSizeText:{
         color: '#D17842',
@@ -137,17 +136,21 @@ const styles = StyleSheet.create({
     priceContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 20,
-        // backgroundColor: '#1a1a1a'
+        marginBottom: 15,
+        marginTop: 10
+        
+       
     },
     priceText: {
-        color: '#fff',
-        fontSize: 16,
-        marginLeft: 8
+      color: '#52555A',
+      fontSize: 16,
+      fontWeight: 'bold',
+      marginLeft: 10
+
     },
     priceAmount: {
         color: '#fff',
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
     },
     addToCartButton: {

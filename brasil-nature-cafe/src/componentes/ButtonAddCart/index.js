@@ -1,29 +1,26 @@
 import React, { useState } from "react";
 import { StyleSheet, Button, Alert, TouchableOpacity, Text, View } from "react-native";
-import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+
 
 export default function App() { 
-    const [headerLine] = useState("Sucesso!")
-    const [tip] = useState("Produto adicionado ao carrinho!")
-
-
-
-    function showAlert(){
-        Alert.alert()
-        headerLine, tip,
-        [
-            {text: "OK", onPress: () => console.log("OK pressed")}
-        ]
+    function onPress() {
+        console.log("PRODUTO ADICIONADO NO CARRINHO!")
     }
+    
     
     return (
         <View style={styles.container}>
-            <Button 
-            style={styles.stylebutton}
-            title="Add to Cart"
-            color="#D17842"
-            width={200}
-            onPress={showAlert}>Show Alert</Button>
+            <TouchableOpacity
+                onPress={onPress}
+                activeOpacity={0.7}
+                >
+                    <View style={styles.containerbutton}>
+                        <Text style={styles.buttonText}>
+                            Add To Cart
+                        </Text>
+                    </View>
+                
+            </TouchableOpacity>
         </View>
     );
 }
@@ -33,11 +30,25 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#0C0F14',
         alignItems: 'flex-end',
+        marginVertical: 10
 
     },
-    stylebutton:{
-        borderRadius: 20
-    }
+    containerbutton:{
+        width: '240px',
+        height: '60px',
+        backgroundColor: '#D17842',
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center'
+
+    },
+    buttonText: {
+        fontSize: 18,
+        color: '#FFF',
+        fontFamily: 'Anton_400Regular',
+        fontWeight: 'bold'
+
+}
 })
 
 

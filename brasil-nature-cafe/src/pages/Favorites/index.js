@@ -21,23 +21,4 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
    },
-//    image:{
-//     justifyContent: 'center'
-
-//    },
-//    text:{
-//     color: '#D17842',
-//     fontSize: 40,
-//     fontWeight: 'Bold',
-//     flexDirection: 'row',
-//     alignSelf: 'center',
-//     marginTop: 20
-//    },
-//    box: {
-//     width: 100,
-//     height: 100,
-//     backgroundColor: "#FFF",
-//     borderRadius: 23,
-    
-//    },
 })

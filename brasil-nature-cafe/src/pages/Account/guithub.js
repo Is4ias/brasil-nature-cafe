@@ -25,7 +25,7 @@ const AppLink2 = () => {
                 <FontAwesome
                     name="github-square"
                     size={28}
-                    color="#FFF"
+                    color="#4B3832"
                 />
             </OpenURLButton2>
         </View>
