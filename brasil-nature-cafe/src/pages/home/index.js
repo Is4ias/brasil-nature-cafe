@@ -12,10 +12,15 @@ import CoffeList from '../../componentes/ListaHorizontal/MenuHorizontal';
 
 
 export default function Home() {
+    const navigation = useNavigation();
+
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => {
+            return true;
 
         });
+
+        return () => BackHandler.remove();
     }, []);
 
     const [products, setProducts] = useState([]);
@@ -63,7 +68,7 @@ export default function Home() {
         navigation.navigate('Notifications');
     };
 
-const navigation = useNavigation();
+
 
 return (
     <View style={styles.container}>
@@ -109,7 +114,7 @@ return (
             </BarraPesquisa>
             <CoffeList></CoffeList>
 
-            <ScrollView vertical showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.ContainerProduts}>
                     <ScrollView showsHorizontalScrollIndicator={false}>
                         <FlatList
@@ -121,18 +126,18 @@ return (
 
                         <Text style={styles.Title2}>Special for you</Text>
 
-                        <View style={styles.ContainerProduts}>
-                            <FlatList
-                                horizontal
-                                data={products}
-                                keyExtractor={(item) => item.id.toString()}  
-                                renderItem={renderItemProduct}
-                            />
-                        </View>
+                        
+                        <FlatList
+                            horizontal
+                            data={products}
+                            keyExtractor={(item) => item.id.toString()}  
+                            renderItem={renderItemProduct}
+                        />
+                        
 
                         <Text style={styles.Title2}>New products</Text>
-
                         <ImageList></ImageList>
+
                     </ScrollView>
                 </View>
             </ScrollView>
@@ -169,8 +174,8 @@ const styles = StyleSheet.create({
             marginRight: 20
         },
         imageProduto:{
-            width: '138px',
-            height: '145px',
+            width: 138,
+            height: 145,
             borderRadius: 23,
             marginLeft: 3,
             marginTop: 10
@@ -181,7 +186,7 @@ const styles = StyleSheet.create({
             gap: 5, 
             width: '30%', 
             height: 'auto',
-            borderRadius: '25%', 
+            borderRadius: 25, 
             position: 'absolute', 
             marginTop: 12, 
             right: 5, 
@@ -215,11 +220,12 @@ const styles = StyleSheet.create({
             fontFamily: 'Anton_400Regular',
             fontSize: 30,
             marginHorizontal: '8%',
-            marginTop: 60,
-            marginVertical: 30,
+            marginVertical: 20
+            // marginTop: 60,
+            // marginVertical: 30,
         },
         ContainerProduts:{
-            gap: 10,
+            gap: 1,
         },
         GraySquare:{ //caixa cinza
             backgroundColor: '#252A32',

@@ -40,7 +40,7 @@ const ImageList = () => {
                             />
                             {/* <Text>{item.name}</Text> */}
                         </View>
-                        <InfoProdcts></InfoProdcts>
+                        {/* <InfoProdcts></InfoProdcts> */}
                     </View>
                )}
             />
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
         margin: 5
     },
     image:{
-       width: '138px',
-       height: '145px',
+       width: 138,
+       height: 145,
        borderRadius: 23,
        marginLeft: 3,
        marginTop: 10
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     GraySquare:{
         backgroundColor: '#252A32',
         borderRadius: 23,
-        width: '160px',
-        height: '245.68px',
+        width: 160,
+        height: 245.68,
         zIndex: 1,
         alignItems: 'center',
         marginRight: 15,  

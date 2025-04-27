@@ -89,7 +89,7 @@ export default function MyAccount(){
 const styles = StyleSheet.create({
     Container:{
         flex: 1,
-        backgroundColor: '#F5F5DC'
+            backgroundColor: '#0C0F14'
     },    
     ImageBackground:{
         width: Dimensions.get('window') .width,

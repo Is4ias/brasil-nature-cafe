@@ -17,6 +17,7 @@ import ExpressScreen from './src/pages/ExpressScreen';
 import AmericanScreen from './src/pages/AmericanScreen'
 import TraditionalScreen from './src/pages/TraditionalScreen';
 import NoSugarScreen from './src/pages/NoSugarScreen';
+// import { Navigation } from 'react-native-feather';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -111,52 +112,24 @@ const Routes = () => {
         <Stack.Screen name="traditional" component={TraditionalScreen} />
         <Stack.Screen name="no sugar" component={NoSugarScreen} />
 
-         <Stack.Screen
+         {/* <Stack.Screen
           name="Account"
           component={MyAccount}
-          options={{
-            headerLeft: () => (
-              <TouchableOpacity style={{ marginLeft: 15}}>
-                <Feather name="arrow-left" size={24} color="#DC3535"></Feather>
-              </TouchableOpacity>
-            )
-          }}>
-         </Stack.Screen>
+          /> */}
 
-         <Stack.Screen
+         {/* <Stack.Screen
           name='Favorites'
           component={Favoritos}
-          options={{
-            headerLeft: () => (
-              <TouchableOpacity style={{ marginLeft: 15}}>
-                <Feather name="arrow-left" size={24} color="#DC3535"></Feather>
-              </TouchableOpacity>
-            )
-          }}/>
+          /> */}
 
          <Stack.Screen
             name="Notification"
             component={NotificationsPage}
-            options={{
-              headerRight: () => (
-                <TouchableOpacity style={{ marginRight: 15}}>
-                  <Feather name='shopping-cart' size={24} color="black"></Feather>
-                </TouchableOpacity>
-              ),
-            }}
           />
-          <Stack.Screen
-            name='Carrinho'
+          {/* <Stack.Screen
+            name='ShoppingCart'
             component={ShoppingCartScreen}
-            options={{
-              headerRight: () => (
-                <TouchableOpacity style={{ marginRight: 15 }}>
-                  <Feather name="shopping-cart" size={24} color="#DC3535" />
-                </TouchableOpacity>
-              ),
-
-            }}
-          />
+          /> */}
 
        </Stack.Navigator>
      </NavigationContainer>

@@ -62,11 +62,13 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     itemContainer: {
-        paddingVertical: 10,
         paddingHorizontal: 20,
         marginHorizontal: 5,
         borderRadius: 20,
         backgroundColor: '#52555A',
+        alignItems: 'center',
+        justifyContent: 'center'
+
     },
     selectedItem: {
         backgroundColor: '#D17842',
@@ -74,6 +76,7 @@ const styles = StyleSheet.create({
     itemText: {
         coor: '#FFF',
         fontSize: 16,
+        
     },
     selectedText: {
         color: '#FFF',
@@ -83,7 +86,8 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 40,
         marginVertical: 20,
-        marginHorizontal: 20
+        marginHorizontal: 20,
+        
 
     }
 })
