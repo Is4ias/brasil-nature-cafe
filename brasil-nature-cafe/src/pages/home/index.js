@@ -126,6 +126,9 @@ return (
 
                         <Text style={styles.Title2}>Special for you</Text>
 
+                        <ImageList></ImageList>
+                        
+                        <Text style={styles.Title2}>New products</Text>
                         
                         <FlatList
                             horizontal
@@ -133,16 +136,12 @@ return (
                             keyExtractor={(item) => item.id.toString()}  
                             renderItem={renderItemProduct}
                         />
-                        
-
-                        <Text style={styles.Title2}>New products</Text>
-                        <ImageList></ImageList>
 
                     </ScrollView>
+                        
                 </View>
             </ScrollView>
         </ScrollView>
-
     </View>  
   );
 }

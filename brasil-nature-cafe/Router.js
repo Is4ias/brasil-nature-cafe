@@ -3,7 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AntDesign, Entypo, Feather, FontAwesome5, Foundation, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { Entypo, Foundation, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacity} from 'react-native';
 
 import Home from './src/pages/home';
@@ -17,11 +17,19 @@ import ExpressScreen from './src/pages/ExpressScreen';
 import AmericanScreen from './src/pages/AmericanScreen'
 import TraditionalScreen from './src/pages/TraditionalScreen';
 import NoSugarScreen from './src/pages/NoSugarScreen';
-// import { Navigation } from 'react-native-feather';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+const backToHomeHeader = ( navigataion ) => ({
+  headerShown: false,
+  headerLeft: () => (
+    <TouchableOpacity onPress={navigataion.navigate('home')} style={{ marginLeft: 15, zIndex: 2}}>
+      <MaterialIcons name="arrow-back" size={24} color="#d17842"></MaterialIcons>
+    </TouchableOpacity>
+  )
+})
 
 function Tabs() {
   return (
@@ -106,11 +114,15 @@ const Routes = () => {
            component={Detail}
            options={{ headerShown: false}}
          />
-        <Stack.Screen name="capuccino" component={CapuccinoScreen} />
-        <Stack.Screen name="express" component={ExpressScreen} />
-        <Stack.Screen name="american" component={AmericanScreen} />
-        <Stack.Screen name="traditional" component={TraditionalScreen} />
-        <Stack.Screen name="no sugar" component={NoSugarScreen} />
+        <Stack.Screen  
+          name="capuccino" 
+          component={CapuccinoScreen}  
+          options={({ navigation }) => backToHomeHeader(navigation)}
+          />
+        <Stack.Screen name="express" component={ExpressScreen} options={{ headerShown: false}} />
+        <Stack.Screen name="american" component={AmericanScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="traditional" component={TraditionalScreen} options={{ headerShown: false}} />
+        <Stack.Screen name="no sugar" component={NoSugarScreen} options={{ headerShown: false }}/>
 
          {/* <Stack.Screen
           name="Account"
@@ -135,7 +147,6 @@ const Routes = () => {
      </NavigationContainer>
   );
  };
-
 
  
  

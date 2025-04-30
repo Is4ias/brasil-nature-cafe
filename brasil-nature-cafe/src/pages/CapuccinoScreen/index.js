@@ -1,3 +1,4 @@
+import { MaterialIcons , Ionicons} from '@expo/vector-icons';
 import { View, StyleSheet, Text} from 'react-native';
 
 
@@ -8,6 +9,7 @@ export default function Capuccino(){
                 <Text style={styles.textCoffe}>
                     Cappucino Coffe
                 </Text>
+
             </View>
         </View>
     )
