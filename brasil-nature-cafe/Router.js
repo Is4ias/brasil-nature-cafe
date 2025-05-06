@@ -114,17 +114,13 @@ const Routes = () => {
            component={Detail}
            options={{ headerShown: false}}
          />
-        <Stack.Screen  
-          name="capuccino" 
-          component={CapuccinoScreen}  
-          options={({ navigation }) => backToHomeHeader(navigation)}
-          />
+        <Stack.Screen name="capuccino" component={CapuccinoScreen} options={{ headerShown: false}}/>
         <Stack.Screen name="express" component={ExpressScreen} options={{ headerShown: false}} />
         <Stack.Screen name="american" component={AmericanScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="traditional" component={TraditionalScreen} options={{ headerShown: false}} />
         <Stack.Screen name="no sugar" component={NoSugarScreen} options={{ headerShown: false }}/>
 
-         {/* <Stack.Screen
+         {/* <Stack.Scree§§n
           name="Account"
           component={MyAccount}
           /> */}

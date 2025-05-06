@@ -32,9 +32,7 @@ const ImageList = () => {
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
                     <View style={styles.GraySquare}>
-                        
                         <View style={styles.imageContainer}>
-
                             <Image 
                                 source={item.source}   
                                 style={styles.image}
@@ -53,9 +51,6 @@ const ImageList = () => {
 
 const styles = StyleSheet.create({
     container:{
-        padding: 10,
-        paddingHorizontal: 20,
-        marginTop: 10
         
     },
     imageContainer:{
@@ -73,11 +68,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#252A32',
         borderRadius: 23,
         width: 160,
-        height: 245,
+        height: 245.68,
         zIndex: 1,
         alignItems: 'center',
         marginRight: 15,  
-        marginLeft: 8,
+        marginLeft: 30,
         flexDirection: 'column',
 
         shadowColor: '#000',

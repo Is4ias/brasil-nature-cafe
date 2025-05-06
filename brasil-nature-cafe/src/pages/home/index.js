@@ -224,17 +224,17 @@ const styles = StyleSheet.create({
             // marginVertical: 30,
         },
         ContainerProduts:{
-            gap: 1,
+            
         },
         GraySquare:{ //caixa cinza
             backgroundColor: '#252A32',
             borderRadius: 23,
-            width: '160px',
-            height: '245.68px',
+            width: 160,
+            height: 245.68,
             zIndex: 1,
             alignItems: 'center',
             marginRight: 15,  
-            marginLeft: 20,
+            marginLeft: 30,
             flexDirection: 'column',
         },
     });
