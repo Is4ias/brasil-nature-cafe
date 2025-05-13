@@ -28,7 +28,7 @@ const SearchBar= ({ onSearch }) => {
         
         <TextInput
           style={styles.searchInput}
-          placeholder="Find Your Coffee..."
+          placeholder="Encontre seu café"
           value={query}
           onChange={handleInputChange}
           color="#52555A"
@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
     
   },
   searchBarContainer: {
-    width: '80%',
+    width: '88%',
     backgroundColor: '#252A32', 
-    borderRadius: '20px',
+    borderRadius: '15px',
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',

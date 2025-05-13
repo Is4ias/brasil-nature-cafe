@@ -8,6 +8,7 @@ import InfoProdcts from '../../componentes/InfoProducts';
 
 import BarraPesquisa from '../../componentes/BarraPesquisa';
 import CoffeList from '../../componentes/ListaHorizontal/MenuHorizontal';
+import { Header } from '../../componentes/header';
 
 
 
@@ -64,50 +65,19 @@ export default function Home() {
     const navigateToDetail = ( product ) => {
         navigation.navigate('Detail', { item: product });
     }
-    const navigateToNotification = () => {
-        navigation.navigate('Notifications');
-    };
+    
 
 
 
 return (
     <View style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-
-            <View style={ styles.headerTop }>
-                <TouchableOpacity >
-                        <Entypo 
-                            style={ styles.MenuOpen} 
-                            onPress={ console.log("abrir o drawer1") }
-                            name="menu"
-                            size={28}
-                            color="#52555A"
-                        />
-                </TouchableOpacity>
-
-
-                
-                <View style={styles.containerLogo}>
-                    <Image
-                        source={require('../../assets/rıbeirosss.png')}
-                        style={styles.imageLogo}  
-                        resizeMode='contain'
-                    />
-                </View>
-                
-                <TouchableOpacity >
-                        <Entypo  
-                            style={styles.NotificationBell}
-                            name="bell"
-                            size={28}
-                            color="#52555A"
-                            onPress={navigateToNotification}
-                        />
-                </TouchableOpacity>
+        <ScrollView showsVerticalScrollIndicator={false}>\
+            <View>
+                <Header/>
             </View>
             
             <View style={styles.textContainer}>
-                <Text style={[styles.Title]}>Find the best{'\n'}Coffee for you</Text>
+                <Text style={[styles.Title]}>Descubra o melhor{'\n'}Cafe para voce</Text>
             </View>  
 
             <BarraPesquisa>
@@ -116,6 +86,7 @@ return (
 
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.ContainerProduts}>
+                    <Text style={styles.Title}>Populares</Text>
                     <ScrollView showsHorizontalScrollIndicator={false}>
                         <FlatList
                             horizontal
@@ -123,20 +94,9 @@ return (
                             keyExtractor={(item) => item.id.toString()}
                             renderItem={renderItemProduct}
                         />
-
-                        <Text style={styles.Title2}>Special for you</Text>
+                        <Text style={styles.Title2}>Especial para voce</Text>
 
                         <ImageList></ImageList>
-                        
-                        <Text style={styles.Title2}>New products</Text>
-                        
-                        <FlatList
-                            horizontal
-                            data={products}
-                            keyExtractor={(item) => item.id.toString()}  
-                            renderItem={renderItemProduct}
-                        />
-
                     </ScrollView>
                         
                 </View>
@@ -152,26 +112,7 @@ const styles = StyleSheet.create({
             width: '%', //100% da tela
             backgroundColor: '#0C0F14'
         },
-        headerTop:{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-        },
-        containerLogo:{
-            backgroundColor: '#D17842',
-        },
-        imageLogo: {
-            width: 100,
-            height: 120,
-            marginTop: 20,
-            alignSelf: 'center'
-        },
-        MenuOpen:{
-            marginLeft: 20
-        },
-        NotificationBell:{
-            marginRight: 20
-        },
+        
         imageProduto:{
             width: 138,
             height: 145,
@@ -211,20 +152,17 @@ const styles = StyleSheet.create({
             color: '#FFF',
             fontFamily: 'Anton_400Regular',
             fontSize: 30,
-            marginHorizontal: '4%',
-            marginTop: 50,
+            marginHorizontal: '8%',
+            margin: 10
+            
         },
         Title2:{
             color: '#FFF',
             fontFamily: 'Anton_400Regular',
             fontSize: 30,
             marginHorizontal: '8%',
-            marginVertical: 20
-            // marginTop: 60,
+            marginTop: 40,
             // marginVertical: 30,
-        },
-        ContainerProduts:{
-            
         },
         GraySquare:{ //caixa cinza
             backgroundColor: '#252A32',

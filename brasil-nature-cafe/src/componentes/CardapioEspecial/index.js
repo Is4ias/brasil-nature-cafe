@@ -1,7 +1,6 @@
-import React from 'react';
-import { View, FlatList, Image, StyleSheet, Dimensions} from 'react-native';
+import { View, FlatList, Image, StyleSheet, Text } from 'react-native';
 import InfoProdcts from '../../componentes/InfoProducts'
-import { AntDesign } from '@expo/vector-icons';
+
 const images = [
     { id: '1', source: require('../../assets/cafe1.jpg'), name: 'Café Expresso' },
     { id: '2', source: require('../../assets/cafe2.jpg'), name: 'Café Americano' },
@@ -25,11 +24,13 @@ const images = [
 const ImageList = () => {
     return (
         <View style={styles.container}>
+            
             <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 data={images}
                 keyExtractor={item => item.id}
+                initialNumToRender={5}
                 renderItem={({ item }) => (
                     <View style={styles.GraySquare}>
                         <View style={styles.imageContainer}>
@@ -38,7 +39,7 @@ const ImageList = () => {
                                 style={styles.image}
                                 resizeMode='cover'
                             />
-                            {/* <Text style={styles.productName}>{item.name}</Text> */}
+                            <Text style={styles.productName}>{item.name}</Text>
                         </View>
                         <InfoProdcts></InfoProdcts>
                     </View>
@@ -51,7 +52,7 @@ const ImageList = () => {
 
 const styles = StyleSheet.create({
     container:{
-        
+        marginVertical: 30
     },
     imageContainer:{
         flex: 1,
@@ -78,37 +79,18 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
-            heigth: 4,
+            height: 4,
         },
         shadowOpacity: 0.3,
         shadowRadius: 4.65,
         elevation: 8,
     },
-    stars:{
-        flexDirection: 'row',
-        backgroundColor: 'rgba(0,0,0,0.6)',
-        gap: 5,
-        width: 30,
-        heigth: 'auto',
-        borderRadius: 25,
-        position: 'absolute',
-        marginTop: 12,
-        rigth: 5,
-        padding: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    nameProduct: {
-        color: '#FFF',
+    productName: {
         fontSize: 14,
         fontWeight: 'bold',
-        
-    },
-    productName: {
-        marginTop: 8,
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#FFF'
+        color: '#FFF',
+        marginRight: 33,
+        padding: 8
     },
     
 });

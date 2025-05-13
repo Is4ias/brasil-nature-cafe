@@ -1,9 +1,7 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
-import React from "react";
 import { View, Text , TouchableOpacity, Image, StyleSheet} from "react-native";
 
 export default function Shoes(props){
-    
     function filterDescricao(desc){
         if (desc.length < 10){
             return desc;

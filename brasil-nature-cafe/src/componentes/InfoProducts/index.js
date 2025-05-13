@@ -1,4 +1,3 @@
-import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
@@ -16,7 +15,7 @@ export default function ButtonBox() {
                     <TouchableOpacity>
                         <FontAwesome
                             name="dollar"
-                            size={18}
+                            size={20}
                             color="#FF8C00"/>
                     </TouchableOpacity>
 
@@ -24,12 +23,14 @@ export default function ButtonBox() {
                 </View>
 
                 <TouchableOpacity>
-                    <Ionicons 
+                    <View style={styles.desingCart}>
+                        <Ionicons 
                         name="cart" 
-                        color="#FF8C00" 
-                        size={28}
+                        color="#FFF" 
+                        size={20}
                         onPress={navigateToShoppingCart}
                     />
+                    </View>  
                 </TouchableOpacity>
                 
             </View>
@@ -39,9 +40,16 @@ export default function ButtonBox() {
 const styles = StyleSheet.create({
     precoProduto:{
         fontSize: 15,
-        color: '#FFF',
+        color: '#FF8C00',
         fontWeight: 'bold',
         marginLeft: 6
         
+    },
+    desingCart:{
+        backgroundColor: "#FF8C00",
+        borderRadius: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 5
     },
 })

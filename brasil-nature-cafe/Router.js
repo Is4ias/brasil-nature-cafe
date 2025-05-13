@@ -1,10 +1,9 @@
-//rotas
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Entypo, Foundation, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { AntDesign, Entypo, Foundation, Ionicons, MaterialIcons, Feather } from '@expo/vector-icons';
 import { TouchableOpacity} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import Home from './src/pages/home';
 import ShoppingCartScreen from './src/pages/ShoppingCart';
@@ -12,6 +11,7 @@ import NotificationsPage from './src/pages/Notifications';
 import Detail from './src/pages/Detail';
 import MyAccount from './src/pages/Account';
 import Favoritos from './src/pages/Favorites';
+
 import CapuccinoScreen from './src/pages/CapuccinoScreen';
 import ExpressScreen from './src/pages/ExpressScreen';
 import AmericanScreen from './src/pages/AmericanScreen'
@@ -36,7 +36,8 @@ function Tabs() {
      <Tab.Navigator 
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { backgroundColor: '#0C0F14'},
+        tabBarShowLabel: true,
+        tabBarStyle: styles.tabBar,
         tabBarActiveTintColor: '#D17842',
         tabBarInactiveTintColor: '#52555A'
         }}>
@@ -44,44 +45,52 @@ function Tabs() {
        <Tab.Screen 
           name="Home" 
           component={Home}
-          options={{ 
-            tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size}/>,
-            tabBarLabel: 'Início'
-          }} 
+          options={{
+            tabBarLabel: 'Início',
+            tabBarIcon: ({ focused }) => (
+              <View style={[styles.iconContainer, focused && styles.activeIcon]}>
+                <Ionicons name='home' size={24} color={focused ? '#FFF' : '52555A'}/>
+              </View>
+            ),
+          }}
         />
-
-        {/* <Tab.Screen 
-          name="notification" 
-          component={NotificationsPage}
-          options={{ 
-            tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size}/>,
-            tabBarLabel: 'Início'
-          }} 
-        /> */}
-
         <Tab.Screen 
           name="Favorites" 
           component={Favoritos}
           options={{
-            tabBarIcon:({ color, size }) => <Foundation name="heart" color={color} size={size}/>,
-            tabBarLabel: 'Favorites'
-          }}/>
+            tabBarLabel: 'Favoritos',
+            tabBarIcon: ({ focused }) => (
+              <View style={[ styles.iconContainer, focused && styles.activeIcon]}>
+                <Foundation name='heart' size={24} color={ focused ? '#FFF' : '#52555A'}/>
+              </View>
+            )
+          }}
+          />
 
         <Tab.Screen 
           name="ShoppingCart" 
           component={ShoppingCartScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => <Ionicons name="cart" color={color} size={size}/>,
-            tabBarLabel: 'Shopping Cart'
+         options={{
+            tabBarLabel: 'Carrinho',
+            tabBarIcon: ({ focused }) => (
+              <View style={[ styles.iconContainer, focused && styles.activeIcon]}>
+                <Feather name='shopping-cart' size={24} color={ focused ? '#FFF' : '#52555A'}/>
+              </View>
+            )
           }}/>
 
        <Tab.Screen 
           name="Account" 
           component={MyAccount}
           options={{
-            tabBarIcon: ({ color, size }) => <MaterialIcons name="account-circle" color={color} size={size}/>,
-            tabBarLabel: 'My Account'
-          }} />
+            tabBarLabel: 'Perfil',
+            tabBarIcon: ({ focused }) => (
+              <View style={[ styles.iconContainer, focused && styles.activeIcon]}>
+                <MaterialIcons name='account-circle' size={24} color={ focused ? '#FFF' : '#52555A'}/>
+              </View>
+            )
+          }}
+          />
      </Tab.Navigator>
   );
  }
@@ -114,11 +123,11 @@ const Routes = () => {
            component={Detail}
            options={{ headerShown: false}}
          />
-        <Stack.Screen name="capuccino" component={CapuccinoScreen} options={{ headerShown: false}}/>
+        {/* <Stack.Screen name="capuccino" component={CapuccinoScreen} options={{ headerShown: false}}/>
         <Stack.Screen name="express" component={ExpressScreen} options={{ headerShown: false}} />
         <Stack.Screen name="american" component={AmericanScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="traditional" component={TraditionalScreen} options={{ headerShown: false}} />
-        <Stack.Screen name="no sugar" component={NoSugarScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="no sugar" component={NoSugarScreen} options={{ headerShown: false }}/> */}
 
          {/* <Stack.Scree§§n
           name="Account"
@@ -144,9 +153,26 @@ const Routes = () => {
   );
  };
 
- 
- 
- export default Routes;
+export default Routes;
+
+const styles = StyleSheet.create({
+  tabBar:{
+    backgroundColor: '#1a1e25',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    height: 70,
+    position: 'absolute',
+    borderTopWidth: 0
+  },
+  iconContainer:{
+    padding: 10,
+    borderRadius: 30,
+    backgroundColor: 'transparent'
+  },
+  activeIcon:{
+    backgroundColor: '#D17842'
+  }
+})
 
 
 

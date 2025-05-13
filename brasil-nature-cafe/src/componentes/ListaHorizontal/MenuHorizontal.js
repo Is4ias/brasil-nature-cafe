@@ -28,14 +28,14 @@ export default function CoffeList() {
         <TouchableOpacity
             style={[
                 styles.itemContainer,
-                selectedId === item.id && styles.selectedItem, //DESTACANDO A OPÇÃO SELECIONADA
+                selectedId === item.id && styles.selectedItem, 
             ]}
             onPress={() => handlerPress(item.id)}>
 
                 <Text
-                    styles={[
+                    style={[
                         styles.itemText,
-                        selectedId === item.id && styles.selectedText, //Muda a cor do texto do item selecionado
+                        selectedId === item.id && styles.selectedText,
                     ]}
                     >
                     {item.title}
@@ -52,15 +52,12 @@ export default function CoffeList() {
                     keyExtractor={(item) => item.id}
                     extraData={selectedId}
                     showsHorizontalScrollIndicator={false}
-                    fontSize={24}
+                    
                 />
             </View>
     );
 }
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 20,
-    },
     itemContainer: {
         paddingHorizontal: 20,
         marginHorizontal: 5,
@@ -74,8 +71,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#D17842',
     },
     itemText: {
-        coor: '#FFF',
-        fontSize: 16,
+        color: '#FFF',
+        fontSize: 15,
         
     },
     selectedText: {
